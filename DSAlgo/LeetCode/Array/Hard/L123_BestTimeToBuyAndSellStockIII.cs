@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array
+namespace DSAlgo.LeetCode.Array.Hard
 {
     public class L123_BestTimeToBuyAndSellStockIII
     {
@@ -32,7 +32,7 @@ namespace DSAlgo.LeetCode.Array
             for (int i = 1; i < n; i++)
             {
                 minPrice = Math.Min(minPrice, prices[i]);
-                leftProfits[i] = Math.Max(leftProfits[i - 1], prices[i] - minPrice);
+                leftProfits[i] = Math.Max(leftProfits[i - 1], prices[i] - minPrice); // this is the max profit we can get by selling at prices[i] after buying at minPrice
             }
 
             // Calculate max profit for one transaction from the right
@@ -82,14 +82,21 @@ namespace DSAlgo.LeetCode.Array
             return leftMaxProfit + rightMaxProfit;
         }
 
+        // approach of the above solution
+        // 1. Initialize two variables to keep track of the maximum profit for one transaction from the left and one from the right.
+        // 2. Iterate through the prices array from left to right to calculate the maximum profit for one transaction from the left.
+        // 3. Iterate through the prices array from right to left to calculate the maximum profit for one transaction from the right.
+        // 4. Combine both profits to get the maximum profit with two transactions.
+        // 5. Return the maximum profit.
+
         // Example usage
-        public static void Main(string[] args)
-        {
-            L123_BestTimeToBuyAndSellStockIII solution = new L123_BestTimeToBuyAndSellStockIII();
-            int[] prices = { 3, 2, 6, 5, 0, 3 };
-            int maxProfit = solution.MaxProfit(prices);
-            Console.WriteLine($"Maximum profit with two transactions: {maxProfit}");
-        }
+        //public static void Main(string[] args)
+        //{
+        //    L123_BestTimeToBuyAndSellStockIII solution = new L123_BestTimeToBuyAndSellStockIII();
+        //    int[] prices = { 3, 2, 6, 5, 0, 3 };
+        //    int maxProfit = solution.MaxProfit(prices);
+        //    Console.WriteLine($"Maximum profit with two transactions: {maxProfit}");
+        //}
 
 
     }

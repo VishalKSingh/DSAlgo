@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSAlgo.LeetCode.DP
+﻿namespace DSAlgo.LeetCode.DP
 {
+    using System;
     public class L403_FrogJump
     {
         /// This problem is about finding if a frog can cross a river by jumping on stones.

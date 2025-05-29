@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Array
 {
+    using System;
     public class L18_4Sum
     {
         public IList<IList<int>> FourSum(int[] nums, int target)

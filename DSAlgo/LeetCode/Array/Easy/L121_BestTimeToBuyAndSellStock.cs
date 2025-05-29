@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array
+namespace DSAlgo.LeetCode.Array.Easy
 {
     public class L121_BestTimeToBuyAndSellStock
     {
@@ -20,7 +20,7 @@ namespace DSAlgo.LeetCode.Array
 
         public int MaxProfit(int[] prices)
         {
-            int minPrice = Int32.MaxValue;
+            int minPrice = int.MaxValue;
             int maxProfit = 0;
 
             foreach (int price in prices)

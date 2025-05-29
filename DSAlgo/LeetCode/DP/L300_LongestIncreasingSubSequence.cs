@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSAlgo.LeetCode.DP
+﻿namespace DSAlgo.LeetCode.DP
 {
+    using System;
     public class L300_LongestIncreasingSubSequence
     {
         // This is a classic dynamic programming problem where we want to find the length of the longest increasing subsequence in an array.

@@ -1,5 +1,6 @@
 ﻿namespace DSAlgo.LeetCode.Array
 {
+    using System;
     public class L15_3Sum
     {
         public IList<IList<int>> ThreeSum(int[] nums)
@@ -43,17 +44,17 @@
         }
 
         // Example usage
-        public static void Main(string[] args)
-        {
-            L15_3Sum solution = new L15_3Sum();
-            int[] nums = { -1, 0, 1, 2, -1, -4 };
-            IList<IList<int>> result = solution.ThreeSum(nums);
+        //public static void Main(string[] args)
+        //{
+        //    L15_3Sum solution = new L15_3Sum();
+        //    int[] nums = { -1, 0, 1, 2, -1, -4 };
+        //    IList<IList<int>> result = solution.ThreeSum(nums);
 
-            foreach (var triplet in result)
-            {
-                Console.WriteLine($"[{string.Join(", ", triplet)}]");
-            }
-        }
+        //    foreach (var triplet in result)
+        //    {
+        //        Console.WriteLine($"[{string.Join(", ", triplet)}]");
+        //    }
+        //}
 
         // Time Complexity: O(n^2)
         // Space Complexity: O(1) for the result list, but O(n) for the sorting step

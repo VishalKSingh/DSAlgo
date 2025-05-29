@@ -10,6 +10,7 @@ namespace DSAlgo.LeetCode.Array
     {
         /// This problem is about finding the majority element in an array
         // The majority element is the element that appears more than n/2 times in the array
+
         // The Boyer-Moore Voting Algorithm is used to find the majority element in linear time and constant space
         // Time Complexity: O(n) where n is the number of elements in the array
         // Space Complexity: O(1) as we are using only a few variables
