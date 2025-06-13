@@ -5,6 +5,10 @@ namespace DSAlgo.LeetCode.Array
     using System;
     public class L18_4Sum
     {
+        // This problem is to find all unique quadruplets in an array that sum to a given target.
+        // The approach is to sort the array and use a two-pointer technique to find pairs that sum to the negative of the current two elements.
+        // Time Complexity: O(n^3) where n is the number of elements in the array
+        // Space Complexity: O(1) for the result list, but O(n) for the sorting step
         public IList<IList<int>> FourSum(int[] nums, int target)
         {
             Array.Sort(nums);

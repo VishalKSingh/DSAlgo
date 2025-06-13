@@ -1,8 +1,12 @@
-﻿namespace DSAlgo.LeetCode.Array
+﻿namespace DSAlgo.LeetCode.Array.Medium
 {
     using System;
     public class L15_3Sum
     {
+        // This problem is to find all unique triplets in an array that sum to zero.
+        // The approach is to sort the array and use a two-pointer technique to find pairs that sum to the negative of the current element.
+        // Time Complexity: O(n^2) where n is the number of elements in the array
+        // Space Complexity: O(1) for the result list, but O(n) for the sorting step
         public IList<IList<int>> ThreeSum(int[] nums)
         {
             List<IList<int>> result = new List<IList<int>>();
@@ -74,7 +78,7 @@
         // The time complexity is O(n^2) because for each element, we are using a two-pointer approach,
 
 
-        
+
 
 
     }

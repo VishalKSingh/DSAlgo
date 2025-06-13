@@ -4,26 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array
+namespace DSAlgo.LeetCode.Array.Easy
 {
     public class L1_TwoSum
     {
-            // Time Complexity: O(n)
-            // Space Complexity: O(n)
-            public int[] TwoSum(int[] nums, int target)
+
+        // This problem is to find two indices in an array such that the numbers at those indices add up to a given target.
+        // The approach is to use a hash map to store the indices of the numbers we have seen so far.
+        // For each number, we check if the complement (target - current number) exists in the map.
+        // If it does, we return the indices of the current number and its complement.
+
+        // Time Complexity: O(n)
+        // Space Complexity: O(n)
+        public int[] TwoSum(int[] nums, int target)
+        {
+            Dictionary<int, int> map = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
             {
-                Dictionary<int, int> map = new Dictionary<int, int>();
-                for (int i = 0; i < nums.Length; i++)
+                int complement = target - nums[i];
+                if (map.ContainsKey(complement))
                 {
-                    int complement = target - nums[i];
-                    if (map.ContainsKey(complement))
-                    {
-                        return new int[] { map[complement], i };
-                    }
-                    map[nums[i]] = i;
+                    return new int[] { map[complement], i };
                 }
-                throw new ArgumentException("No two sum solution");
+                map[nums[i]] = i;
             }
+            throw new ArgumentException("No two sum solution");
+        }
 
         // The above solution uses a hash map to store the indices of the numbers
         // This allows us to find the complement in O(1) time
