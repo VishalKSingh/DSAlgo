@@ -23,6 +23,7 @@ namespace DSAlgo.LeetCode.Array.Medium
             Reverse(nums, k, n - 1); // Reverse the remaining n-k elements
         }
 
+        // This helper function reverses a portion of the array from start to end indices
         private void Reverse(int[] nums, int start, int end)
         {
             while (start < end)
