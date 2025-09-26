@@ -47,22 +47,6 @@
             return result;
         }
 
-        // Example usage
-        //public static void Main(string[] args)
-        //{
-        //    L15_3Sum solution = new L15_3Sum();
-        //    int[] nums = { -1, 0, 1, 2, -1, -4 };
-        //    IList<IList<int>> result = solution.ThreeSum(nums);
-
-        //    foreach (var triplet in result)
-        //    {
-        //        Console.WriteLine($"[{string.Join(", ", triplet)}]");
-        //    }
-        //}
-
-        // Time Complexity: O(n^2)
-        // Space Complexity: O(1) for the result list, but O(n) for the sorting step
-        // The overall space complexity is O(n) due to the result list.
         // The algorithm uses a two-pointer technique to find triplets that sum to zero.
         // The outer loop iterates through the sorted array, and for each element,
         // it uses two pointers (left and right) to find pairs that sum to the negative of the current element.
@@ -74,12 +58,5 @@
         // which takes O(n) time, and we are iterating through the array once, leading to O(n^2) overall.
         // The space complexity is O(1) for the result list, but O(n) for the sorting step.
         // The overall space complexity is O(n) due to the result list.
-        // The algorithm is efficient and works well for large input arrays.
-        // The time complexity is O(n^2) because for each element, we are using a two-pointer approach,
-
-
-
-
-
     }
 }
