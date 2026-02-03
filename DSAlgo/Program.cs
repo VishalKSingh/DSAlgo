@@ -8,6 +8,7 @@ using DSAlgo.LeetCode.Helper;
 using DSAlgo.LeetCode.String.Hard;
 using DSAlgo.LeetCode.String.Medium;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
 
 var equations = new List<IList<string>>
             {
@@ -132,13 +133,23 @@ var queries = new List<IList<string>>
 //Console.ReadLine();
 
 
-var solution = new L120_Triangle();
-var triangle = new List<IList<int>>
-{
-    new List<int> { 2 },
-    new List<int> { 3, 4 },
-    new List<int> { 6, 5, 7 },
-    new List<int> { 4, 1, 8, 3 }
-};
-var minPathSum = solution.MinimumTotal_BruteForce(triangle);
-Console.WriteLine(minPathSum); // Output: 11
+//var solution = new L120_Triangle();
+//var triangle = new List<IList<int>>
+//{
+//    new List<int> { 2 },
+//    new List<int> { 3, 4 },
+//    new List<int> { 6, 5, 7 },
+//    new List<int> { 4, 1, 8, 3 }
+//};
+//var minPathSum = solution.MinimumTotal_BruteForce(triangle);
+//Console.WriteLine(minPathSum); // Output: 11
+
+
+var answer = MathHelp.checkPalindrom(10021);
+Console.WriteLine("isPalindrom: " + answer);
+Console.ReadKey();
+
+
+
+
+

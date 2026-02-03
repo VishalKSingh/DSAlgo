@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Array.Easy
 {
-    internal class L283MoveZeroes
+    internal class L283_MoveZeroes
     {
         // This problem is to move all zeroes in an array to the end while maintaining the order of non-zero elements.
         // The approach is to use a two-pointer technique to swap non-zero elements with zeroes.

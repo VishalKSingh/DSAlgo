@@ -25,12 +25,11 @@ namespace DSAlgo.LeetCode.Graph
             Console.WriteLine("This is another example of a BFS method.");
             // Implement additional BFS logic here
         }
-        // You can add more BFS-related methods as needed
+
         // For example, you can implement BFS for graph traversal, shortest path finding, etc.
         // This class can be used as a base for implementing BFS algorithms in various graph-related problems
         // For example, you can implement BFS for finding the shortest path in an unweighted graph
         // or for traversing a tree structure.
-        // Remember to include necessary using directives for collections and other required namespaces
         // You can also implement BFS for specific problems like finding connected components in a graph,
         // or for solving problems like "Word Ladder" or "Shortest Path in a Grid".
         // This class can be extended further based on specific BFS-related problems you want to solve
@@ -43,13 +42,16 @@ namespace DSAlgo.LeetCode.Graph
         // and can be extended with more specific methods as needed.
 
         // write a method to demonstrate BFS traversal on a graph
+        // Time complexity: O(V + E) where V is the number of vertices and E is the number of edges
+        // Space complexity: O(V) for the queue and visited set
         public void BFSGraphTraversal(Dictionary<int, List<int>> graph, int startNode)
         {
-            var visited = new HashSet<int>();
-            var queue = new Queue<int>();
-            queue.Enqueue(startNode);
-            visited.Add(startNode);
+            var visited = new HashSet<int>(); // To keep track of visited unique nodes
+            var queue = new Queue<int>(); // Queue for BFS
+            queue.Enqueue(startNode); // Start from the given start node
+            visited.Add(startNode); // Mark the start node as visited
 
+            // Perform BFSl
             while (queue.Count > 0)
             {
                 int currentNode = queue.Dequeue();

@@ -14,8 +14,8 @@ namespace DSAlgo.LeetCode.Array
         // If the current sum becomes negative, we reset it to zero.    
         // We also keep track of the maximum sum encountered so far.
         // The space complexity is O(1) since we are using only a few variables to store the current sum and maximum sum.
-
         // The final result is the maximum sum of the contiguous subarray.
+        
         // The algorithm works as follows:
         // 1. Initialize two variables: sum to 0 and maxSum to the minimum possible integer value.
         // 2. Iterate through the array:
@@ -57,7 +57,7 @@ namespace DSAlgo.LeetCode.Array
         //    b. The inner loop iterates through the subarray starting from the current element of the outer loop.
         //    c. For each subarray, calculate the sum and update maxSum if the current sum is greater than maxSum.
         // 3. Return maxSum as the result.
-        // The time complexity of this algorithm is O(n^2), where n is the length of the input array.
+        // The time complexity is O(n^2), where n is the length of the input array.
         // The space complexity is O(1) since we are using only a few variables to store the current sum and maximum sum.
 
         public int MaximumSubArrayBruteForce(int[] nums)

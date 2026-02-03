@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Array.Easy
 {
-    internal class L268MissingNumber
+    internal class L268_MissingNumber
     {
         // This problem is to find the missing number in an array containing n distinct numbers taken from 0 to n.
         // The approach is to use the formula for the sum of the first n natural numbers and subtract the sum of the array elements.

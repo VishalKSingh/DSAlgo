@@ -8,19 +8,29 @@ namespace DSAlgo.LeetCode.Helper
 {
     internal class MathHelp
     {
-        public static int GCD(int a, int b)
+        public static int EculideanGCD(int a, int b)
         {
-            while (b != 0)
+            //while (b != 0)
+            //{
+            //    int remainder = a % b;
+            //    a=b ;
+            //    b = remainder;
+            //}
+            //return a;
+            // it states GCD(a , b) = GCD(a % b, b) while a > b 
+
+            while (a > 0 && b > 0)
             {
-                int remainder = a % b;
-                a=b ;
-                b = remainder;
+                if (a > b)
+                    a = a % b;
+                else
+                    b = b % a;
             }
-            return a;
+            return a == 0 ? b : a;
         }
         public static int LCM(int a, int b)
         {
-            return (a / GCD(a, b)) * b;
+            return (a / EculideanGCD(a, b)) * b;
         }
 
         public static bool IsPrime(int n)
@@ -37,6 +47,39 @@ namespace DSAlgo.LeetCode.Helper
                     return false;
             }
             return true;
+        }
+
+        public static bool IsPrimeBruteForce(int n)
+        {
+            if (n <= 1) return false;
+            if (n <= 3) return true;
+            int count = 0;
+            for (int i = 2; i * i <= n; i++)
+            {
+                if (n % i == 0)
+                {
+                    count++;
+                    if(n / i != i)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            return count == 2 ? true : false;
+        }
+
+        public static List<int> GetPrimesUpToN(int n)
+        {
+            List<int> primes = new List<int>();
+            for (int i = 2; i <= n; i++)
+            {
+                if (IsPrime(i))
+                {
+                    primes.Add(i);
+                }
+            }
+            return primes;
         }
         public static List<int> SieveOfEratosthenes(int n)
         {
@@ -63,5 +106,71 @@ namespace DSAlgo.LeetCode.Helper
             }
             return primes;
         }
+
+        public static int CountDigits(int num)
+        {
+            int count = 0;
+
+            while(num > 0)
+            {
+                int remainder = num % 10;
+                Console.WriteLine("remainder :" + remainder);
+                num = num / 10;
+                count++;
+            }
+
+            return count;
+        }
+
+        public static int ReverseNumber(int num)
+        {
+            int revNum = 0;
+
+            while(num > 0)
+            {
+                int remainder = num % 10;
+                num = num / 10;
+                revNum = (revNum * 10) + remainder;
+            }
+
+            return revNum;
+        }
+
+        public static int Power(int baseNum, int exponent)
+        {
+            int result = 1;
+            for (int i = 0; i < exponent; i++)
+            {
+                result *= baseNum;
+            }
+            return result;
+        }
+
+        public static int Factorial(int n)
+        {
+            if (n == 0 || n == 1)
+                return 1;
+            int fact = 1;
+            for (int i = 2; i <= n; i++)
+            {
+                fact *= i;
+            }
+            return fact;
+        }
+
+        public static bool checkPalindrom(int n)
+        {
+            int reverseNumber = 0;
+            int num = n;
+            while (num > 0)
+            {
+                int remainder = num % 10;
+                num = num / 10;
+                reverseNumber = (reverseNumber * 10) + remainder;
+            }
+            Console.WriteLine("reverseNumber: " + reverseNumber);
+            return reverseNumber == n;
+        }
+
     }
 }

@@ -13,34 +13,40 @@ namespace DSAlgo.LeetCode.Graph
 
         public void ExampleDFS()
         {
+            var graph = new Dictionary<int, List<int>>
+            {
+                { 0, new List<int> { 1, 2 } },
+                { 1, new List<int> { 0, 3, 4 } },
+                { 2, new List<int> { 0 } },
+                { 3, new List<int> { 1 } },
+                { 4, new List<int> { 1, 5 } },
+                { 5, new List<int> { 4 } }
+            };
+
+            DFSGraphTraversal(graph, 0);
+
             // Example method to demonstrate DFS usage
             Console.WriteLine("This is an example of a DFS method.");
             // Implement DFS logic here
-        }
+            Console.WriteLine(
+                "DFS (Depth-First Search) is an algorithm for traversing or searching tree or graph data structures. " +
+                "The algorithm starts at the root (or an arbitrary node in the case of a graph) and explores as far as possible along each branch before backtracking."
+            );
 
-        // Additional DFS methods can be added here
-        public void AnotherDFSExample()
-        {
-            // Another example method to demonstrate DFS usage
-            Console.WriteLine("This is another example of a DFS method.");
-            // Implement additional DFS logic here
         }
 
         // You can add more DFS-related methods as needed
-        // For example, you can implement DFS for graph traversal, path finding, etc.
+        // For example, you can implement DFS for graph traversal, path finding,finding paths in a maze, Maximum Depth of Binary Tree etc.
         // This class can be used as a base for implementing DFS algorithms in various graph-related problems
         // For example, you can implement DFS for finding connected components in a graph,
         // or for solving problems like "Word Search" or "Number of Islands".
-        // Remember to include necessary using directives for collections and other required namespaces
-        // You can also implement DFS for specific problems like finding paths in a maze,
-        // or for solving problems like "Maximum Depth of Binary Tree" using DFS traversal.
-        // This class can be extended further based on specific DFS-related problems you want to solve
-        // or algorithms you want to implement.
-        // For example, you can implement DFS for finding the longest path in a directed acyclic graph (DAG),
-        // or for solving problems like "Binary Tree Paths" using DFS traversal.
-        // This class serves as a starting point for implementing DFS algorithms
-        // and can be extended with more specific methods as needed.
+
+        // finding the longest path in a directed acyclic graph (DAG),
+        // "Binary Tree Paths" using DFS traversal.
+
         // write a method to demonstrate DFS traversal on a graph
+        // Time complexity: O(V + E) where V is the number of vertices and E is the number of edges
+        // Space complexity: O(V) for the recursion stack and visited set
         public void DFSGraphTraversal(Dictionary<int, List<int>> graph, int startNode)
         {
             var visited = new HashSet<int>();
@@ -56,6 +62,29 @@ namespace DSAlgo.LeetCode.Graph
                 if (!visited.Contains(neighbor))
                 {
                     DFSUtil(graph, neighbor, visited);
+                }
+            }
+        }
+
+        private void DFSUtilIterative(Dictionary<int, List<int>> graph, int startNode)
+        {
+            var visited = new HashSet<int>();
+            var stack = new Stack<int>();
+            stack.Push(startNode);
+            while (stack.Count > 0)
+            {
+                int node = stack.Pop();
+                if (!visited.Contains(node))
+                {
+                    visited.Add(node);
+                    Console.WriteLine($"Visited node: {node}");
+                    foreach (var neighbor in graph[node])
+                    {
+                        if (!visited.Contains(neighbor))
+                        {
+                            stack.Push(neighbor);
+                        }
+                    }
                 }
             }
         }
