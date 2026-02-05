@@ -17,6 +17,7 @@ namespace DSAlgo.LeetCode.Array.Easy
         // Space Complexity: O(1)
         // This method calculates the maximum profit that can be made by buying and selling a stock
         // given an array of prices where prices[i] is the price of the stock on the ith day.
+        //[7,1,5,3,6,4]
 
         public int MaxProfit(int[] prices)
         {

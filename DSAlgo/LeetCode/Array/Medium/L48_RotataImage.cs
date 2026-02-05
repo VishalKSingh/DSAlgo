@@ -34,38 +34,24 @@ namespace DSAlgo.LeetCode.Array.Medium
             for (int i = 0; i < n; i++)
             {
                 Array.Reverse(matrix[i]);
+                //ReverseRows(matrix);
             }
         }
 
-        // This method is an alternative approach that uses a layer-by-layer rotation.
-        public void RotateLayerByLayer(int[][] matrix)
+        public void ReverseRows(int[][] matrix)
         {
-            int n = matrix.Length;
-            int layers = n / 2;
+            int top = 0;
+            int bottom = matrix.Length - 1;
 
-            for (int layer = 0; layer < layers; layer++)
+            while (top < bottom)
             {
-                int first = layer;
-                int last = n - 1 - layer;
+                // In C#, we can just swap the row references
+                int[] temp = matrix[top];
+                matrix[top] = matrix[bottom];
+                matrix[bottom] = temp;
 
-                for (int i = first; i < last; i++)
-                {
-                    int offset = i - first;
-                    // Save the top element
-                    int top = matrix[first][i];
-
-                    // Move left to top
-                    matrix[first][i] = matrix[last - offset][first];
-
-                    // Move bottom to left
-                    matrix[last - offset][first] = matrix[last][last - offset];
-
-                    // Move right to bottom
-                    matrix[last][last - offset] = matrix[i][last];
-
-                    // Move top to right
-                    matrix[i][last] = top;
-                }
+                top++;
+                bottom--;
             }
         }
 
@@ -86,46 +72,80 @@ namespace DSAlgo.LeetCode.Array.Medium
 
             return rotatedMatrix;
         }
+
+        // This method is an alternative approach that uses a layer-by-layer rotation.
+        //public void RotateLayerByLayer(int[][] matrix)
+        //{
+        //    int n = matrix.Length;
+        //    int layers = n / 2;
+
+        //    for (int layer = 0; layer < layers; layer++)
+        //    {
+        //        int first = layer;
+        //        int last = n - 1 - layer;
+
+        //        for (int i = first; i < last; i++)
+        //        {
+        //            int offset = i - first;
+        //            // Save the top element
+        //            int top = matrix[first][i];
+
+        //            // Move left to top
+        //            matrix[first][i] = matrix[last - offset][first];
+
+        //            // Move bottom to left
+        //            matrix[last - offset][first] = matrix[last][last - offset];
+
+        //            // Move right to bottom
+        //            matrix[last][last - offset] = matrix[i][last];
+
+        //            // Move top to right
+        //            matrix[i][last] = top;
+        //        }
+        //    }
+        //}
+
+
         // This method uses a mathematical approach to calculate the new positions of the elements.
-        public void RotateMath(int[][] matrix)
-        {
-            int n = matrix.Length;
+        //public void RotateMath(int[][] matrix)
+        //{
+        //    int n = matrix.Length;
 
-            for (int layer = 0; layer < n / 2; layer++)
-            {
-                int first = layer;
-                int last = n - 1 - layer;
+        //    for (int layer = 0; layer < n / 2; layer++)
+        //    {
+        //        int first = layer;
+        //        int last = n - 1 - layer;
 
-                for (int i = first; i < last; i++)
-                {
-                    int offset = i - first;
-                    int top = matrix[first][i];
+        //        for (int i = first; i < last; i++)
+        //        {
+        //            int offset = i - first;
+        //            int top = matrix[first][i];
 
-                    // Rotate elements
-                    matrix[first][i] = matrix[last - offset][first];
-                    matrix[last - offset][first] = matrix[last][last - offset];
-                    matrix[last][last - offset] = matrix[i][last];
-                    matrix[i][last] = top;
-                }
-            }
-        }
+        //            // Rotate elements
+        //            matrix[first][i] = matrix[last - offset][first];
+        //            matrix[last - offset][first] = matrix[last][last - offset];
+        //            matrix[last][last - offset] = matrix[i][last];
+        //            matrix[i][last] = top;
+        //        }
+        //    }
+        //}
         // This method uses a single loop to rotate the matrix in place.
-        public void RotateSingleLoop(int[][] matrix)
-        {
-            int n = matrix.Length;
+        //public void RotateSingleLoop(int[][] matrix)
+        //{
+        //    int n = matrix.Length;
 
-            for (int i = 0; i < n / 2; i++)
-            {
-                for (int j = i; j < n - i - 1; j++)
-                {
-                    int temp = matrix[i][j];
-                    matrix[i][j] = matrix[n - j - 1][i];
-                    matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];
-                    matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];
-                    matrix[j][n - i - 1] = temp;
-                }
-            }
-        }
+        //    for (int i = 0; i < n / 2; i++)
+        //    {
+        //        for (int j = i; j < n - i - 1; j++)
+        //        {
+        //            int temp = matrix[i][j];
+        //            matrix[i][j] = matrix[n - j - 1][i];
+        //            matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];
+        //            matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];
+        //            matrix[j][n - i - 1] = temp;
+        //        }
+        //    }
+        //}
         // This method uses a recursive approach to rotate the matrix.
         public void RotateRecursive(int[][] matrix, int layer = 0)
         {

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DSAlgo.LeetCode.Array
 {
@@ -10,6 +14,7 @@ namespace DSAlgo.LeetCode.Array
     {
         // This is a classic problem of finding the maximum sum of a contiguous subarray.
         // The algorithm used here is Kadane's algorithm, which runs in O(n) time complexity.
+
         // The idea is to iterate through the array while maintaining the current sum of the subarray.
         // If the current sum becomes negative, we reset it to zero.    
         // We also keep track of the maximum sum encountered so far.
@@ -39,7 +44,11 @@ namespace DSAlgo.LeetCode.Array
                 {
                     maxSum = sum;
                 }
-
+                //Adding a negative number to any future sequence will always make that sequence smaller
+                //If you have a current_sum of $-5$ and the next element in the array is $10$, 
+                //you have two choices:
+                //Keep the old sum: $-5 + 10 = 5$
+                //Start fresh(Reset): $0 + 10 = 10$
                 if (sum < 0)
                 {
                     sum = 0;

@@ -145,11 +145,14 @@ var queries = new List<IList<string>>
 //Console.WriteLine(minPathSum); // Output: 11
 
 
-var answer = MathHelp.checkPalindrom(10021);
-Console.WriteLine("isPalindrom: " + answer);
+//var answer = MathHelp.checkPalindrom(10021);
+//Console.WriteLine("isPalindrom: " + answer);
+//Console.ReadKey();
+
+var ans = LongestSubarrayWithSumK.GetLongestSubarray(new int[] { 1, -1, 5, -2, 3 }, 3);
+
+Console.WriteLine("longest: " + ans);
 Console.ReadKey();
-
-
 
 
 

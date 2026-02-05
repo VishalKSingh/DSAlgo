@@ -25,6 +25,7 @@ namespace DSAlgo.LeetCode.Array.Medium
                 // Target sum to find: Sj = Si - k
                 long target = prefixSum - k;
 
+                // If target exists in the map, we found a subarray with sum k.
                 if (map.ContainsKey(target))
                 {
                     int length = i - map[target];

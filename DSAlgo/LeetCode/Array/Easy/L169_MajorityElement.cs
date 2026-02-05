@@ -30,10 +30,36 @@ namespace DSAlgo.LeetCode.Array
 
                 // If the current number is the candidate, increment count
                 // Otherwise, decrement count
-                count += (num == candidate) ? 1 : -1;
+                if (num == candidate) 
+                {
+                    count++;
+                } else {
+                    count--;
+                }
             }
 
             return candidate;
+        }
+        // Brute force approach is to use a hash map to count the frequency of each element in the array
+        public int MajorityElementHashMap(int[] nums)
+        {
+            var dic = new Dictionary<int, int>();
+            int n = nums.Length;
+
+            foreach (int num in nums)
+            {
+                if (!dic.ContainsKey(num))
+                {
+                    dic[num] = 1;
+                }
+                else
+                {
+                    dic[num]++;
+                }
+
+                if (dic[num] > n / 2) return num;
+            }
+            return -1;
         }
 
     }
