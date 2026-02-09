@@ -34,7 +34,6 @@ namespace DSAlgo.LeetCode.String.Medium
             return maxLength;
         }
 
-        // This problem is to find the length of the longest substring without repeating characters.
         // The approach is to use a sliding window technique with a hash set to track characters in the current substring.
         // Time Complexity: O(n) where n is the length of the input string
         // Space Complexity: O(min(n, m)) where m is the size of the character set
@@ -46,6 +45,7 @@ namespace DSAlgo.LeetCode.String.Medium
 
             for (int right = 0; right < s.Length; right++)
             {
+                
                 while (charSet.Contains(s[right]))
                 {
                     charSet.Remove(s[left]);
