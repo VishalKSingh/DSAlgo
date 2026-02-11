@@ -9,29 +9,8 @@ namespace DSAlgo.LeetCode.Array.Medium
     internal class L1004_MaxConsecutiveOneIII
     {
         // The approach is to use a sliding window technique to find the longest subarray that contains at most k zeros.
-        // Time Complexity: O(n) where n is the length of the input array
+        // Time Complexity: O(n2) where n is the length of the input array
         // Space Complexity: O(1) since we are using a constant amount of space
-        public int LongestOnes(int[] nums, int k)
-        {
-            int left = 0, maxLength = 0, zeroCount = 0;
-            for (int right = 0; right < nums.Length; right++)
-            {
-                if (nums[right] == 0)
-                {
-                    zeroCount++;
-                }
-                while (zeroCount > k)
-                {
-                    if (nums[left] == 0)
-                    {
-                        zeroCount--;
-                    }
-                    left++;
-                }
-                maxLength = Math.Max(maxLength, right - left + 1);
-            }
-            return maxLength;
-        }
 
         public int LongestOnesBruteForce(int[] nums, int k)
         {
