@@ -24,6 +24,7 @@ namespace DSAlgo.LeetCode.Array.Medium
                     {
                         zeroCount++;
                     }
+                    
                     if (zeroCount > k)
                     {
                         break;

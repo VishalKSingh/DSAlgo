@@ -52,4 +52,5 @@ namespace DSAlgo.LeetCode.Array.Medium
             }
             return maxLength;
         }
+    }
 }
