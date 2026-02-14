@@ -34,8 +34,8 @@ namespace DSAlgo.LeetCode.String.Hard
                 {
                     // Justify the current line and add it to the result
                     result.Add(JustifyLine(currentLine, currentLength, maxWidth));
-                    currentLine.Clear();
-                    currentLength = 0;
+                    currentLine.Clear(); // Clear the current line for the next set of words
+                    currentLength = 0;// Reset the current length for the next line
                 }
                 currentLine.Add(word);
                 currentLength += word.Length;
