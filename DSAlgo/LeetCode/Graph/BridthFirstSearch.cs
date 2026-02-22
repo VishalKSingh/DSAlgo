@@ -8,40 +8,16 @@ namespace DSAlgo.LeetCode.Graph
 {
     internal class BridthFirstSearch
     {
-        // This class is a placeholder for BFS-related methods
-        // It can be extended to include BFS algorithms for various problems
+       
 
-        public void ExampleBFS()
-        {
-            // Example method to demonstrate BFS usage
-            Console.WriteLine("This is an example of a BFS method.");
-            // Implement BFS logic here
-        }
+        //  finding the shortest path in an unweighted graph or for traversing a tree structure.
+        // finding connected components in a graph,"Word Ladder" or "Shortest Path in a Grid".
         
-        // Additional BFS methods can be added here
-        public void AnotherBFSExample()
-        {
-            // Another example method to demonstrate BFS usage
-            Console.WriteLine("This is another example of a BFS method.");
-            // Implement additional BFS logic here
-        }
-
-        // For example, you can implement BFS for graph traversal, shortest path finding, etc.
-        // This class can be used as a base for implementing BFS algorithms in various graph-related problems
-        // For example, you can implement BFS for finding the shortest path in an unweighted graph
-        // or for traversing a tree structure.
-        // You can also implement BFS for specific problems like finding connected components in a graph,
-        // or for solving problems like "Word Ladder" or "Shortest Path in a Grid".
-        // This class can be extended further based on specific BFS-related problems you want to solve
-        // or algorithms you want to implement.
-        // For example, you can implement BFS for finding the shortest path in a maze,
-        // or for solving problems like "Minimum Depth of Binary Tree" using BFS traversal.
+        // finding the shortest path in a maze, "Minimum Depth of Binary Tree" using BFS traversal.
         // You can also implement BFS for problems like "Level Order Traversal" in trees,
-        // or for finding the shortest path in a weighted graph using Dijkstra's algorithm.
-        // This class serves as a starting point for implementing BFS algorithms
-        // and can be extended with more specific methods as needed.
+        // shortest path in a weighted graph using Dijkstra's algorithm.
 
-        // write a method to demonstrate BFS traversal on a graph
+
         // Time complexity: O(V + E) where V is the number of vertices and E is the number of edges
         // Space complexity: O(V) for the queue and visited set
         public void BFSGraphTraversal(Dictionary<int, List<int>> graph, int startNode)

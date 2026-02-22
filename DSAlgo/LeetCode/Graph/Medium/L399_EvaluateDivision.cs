@@ -35,6 +35,7 @@ namespace DSAlgo.LeetCode.Graph.Medium
             }
 
             var results = new double[queries.Count];
+            // For each query, perform DFS to find the product of values along the path from start to end variable
             for (int i = 0; i < queries.Count; i++)
             {
                 var (start, end) = (queries[i][0], queries[i][1]);

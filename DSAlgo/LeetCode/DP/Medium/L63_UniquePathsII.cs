@@ -124,6 +124,24 @@ namespace DSAlgo.LeetCode.DP.Medium
         }
 
         // Using memoization approach
+        // This method uses a recursive approach with memoization to count the number of unique paths from the top-left corner to the bottom-right corner of a grid with obstacles.
+        // The approach is to recursively explore all possible paths while storing the results of previously computed paths in a memoization array to avoid redundant calculations.
+        // Time Complexity: O(m * n) due to memoization
+        // Space Complexity: O(m * n) for the memoization array
+        public int UniquePathsWithObstaclesMemoization(int[][] obstacleGrid)
+        {
+            if (obstacleGrid == null || obstacleGrid.Length == 0 || obstacleGrid[0].Length == 0)
+                return 0;
+            int m = obstacleGrid.Length;
+            int n = obstacleGrid[0].Length;
+            if (obstacleGrid[0][0] == 1 || obstacleGrid[m - 1][n - 1] == 1)
+                return 0; // If start or end is blocked, return 0
+            int[][] memo = new int[m][];
+            for (int i = 0; i < m; i++)
+                memo[i] = Enumerable.Repeat(-1, n).ToArray(); // Initialize memoization array with -1
+            return UniquePathsWithObstaclesMemoization(obstacleGrid, 0, 0, memo);
+        }
+
         private int UniquePathsWithObstaclesMemoization(int[][] obstacleGrid, int row, int col, int[][] memo)
         {
             int m = obstacleGrid.Length;

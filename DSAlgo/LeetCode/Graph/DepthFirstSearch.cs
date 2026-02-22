@@ -23,16 +23,8 @@ namespace DSAlgo.LeetCode.Graph
                 { 5, new List<int> { 4 } }
             };
 
-            DFSGraphTraversal(graph, 0);
-
-            // Example method to demonstrate DFS usage
-            Console.WriteLine("This is an example of a DFS method.");
-            // Implement DFS logic here
-            Console.WriteLine(
-                "DFS (Depth-First Search) is an algorithm for traversing or searching tree or graph data structures. " +
-                "The algorithm starts at the root (or an arbitrary node in the case of a graph) and explores as far as possible along each branch before backtracking."
-            );
-
+            DFSUtilIterative(graph, 0);
+           
         }
 
         // You can add more DFS-related methods as needed
@@ -66,6 +58,8 @@ namespace DSAlgo.LeetCode.Graph
             }
         }
 
+        // Time complexity: O(V + E) where V is the number of vertices and E is the number of edges
+        // Space complexity: O(V) for the stack and visited set
         private void DFSUtilIterative(Dictionary<int, List<int>> graph, int startNode)
         {
             var visited = new HashSet<int>();
@@ -74,6 +68,8 @@ namespace DSAlgo.LeetCode.Graph
             while (stack.Count > 0)
             {
                 int node = stack.Pop();
+                // If you mark it visited before pushing, you risk skipping nodes if multiple paths lead to the same unvisited node
+                // that is already sitting in the stack.
                 if (!visited.Contains(node))
                 {
                     visited.Add(node);
