@@ -10,6 +10,7 @@ namespace DSAlgo.LeetCode.DP.Medium
     {
         // This is a dynamic programming problem where we want to maximize the amount of money we can rob from houses arranged in a line,
         // given that we cannot rob two adjacent houses.
+
         // The idea is to use a bottom-up approach to build up the solution iteratively.
         // We maintain two variables, prev1 and prev2, which represent the maximum amount of money we can rob up to the previous house and the house
         // before that, respectively.
