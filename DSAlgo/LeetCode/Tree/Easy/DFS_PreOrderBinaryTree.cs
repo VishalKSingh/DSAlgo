@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Tree.Easy
 {
-    public class PreOrderBinaryTree
+    public class DFS_PreOrderBinaryTree
     {
         // This problem is about traversing a binary tree in pre-order
         // Pre-order traversal means visiting the root node first, then the left subtree, and finally the right subtree
@@ -30,6 +30,32 @@ namespace DSAlgo.LeetCode.Tree.Easy
             result.Add(node.val); // Visit the root node
             PreorderHelper(node.left, result); // Traverse the left subtree
             PreorderHelper(node.right, result); // Traverse the right subtree
+        }
+
+        // Iterative approach using a stack can also be used to perform pre-order traversal
+
+        private void PreorderIterative(TreeNode root, List<int> result)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            stack.Push(root); // Start with the root node
+            while (stack.Count > 0)
+            {
+                TreeNode currentNode = stack.Pop(); // Pop the top node
+                result.Add(currentNode.val); // Visit the root node
+                // Push right child first so that left child is processed first
+                if (currentNode.right != null)
+                {
+                    stack.Push(currentNode.right);
+                }
+                if (currentNode.left != null)
+                {
+                    stack.Push(currentNode.left);
+                }
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Tree.Medium
 {
-    internal class L173BinarySearchTreeIterator
+    internal class L173_BinarySearchTreeIterator
     {
         // This problem is about implementing an iterator for a binary search tree (BST)
         // The iterator should return the next smallest number in the BST
@@ -19,8 +19,9 @@ namespace DSAlgo.LeetCode.Tree.Medium
         // Space Complexity: O(h) for the stack used to store nodes
         private Stack<TreeNode> stack;
 
-        public L173BinarySearchTreeIterator(TreeNode root)
+        public L173_BinarySearchTreeIterator(TreeNode root)
         {
+            // Initialize the stack and push all left children of the root onto the stack
             stack = new Stack<TreeNode>();
             PushLeft(root);
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Tree.Easy
 {
-    internal class InOrderTraversalBinaryTree
+    internal class DFS_InOrderTraversalBinaryTree
     {
         // This problem is about traversing a binary tree in in-order
         // In-order traversal means visiting the left subtree first, then the root node, and finally the right subtree
@@ -30,6 +30,28 @@ namespace DSAlgo.LeetCode.Tree.Easy
             InorderHelper(node.left, result); // Traverse the left subtree
             result.Add(node.val); // Visit the root node
             InorderHelper(node.right, result); // Traverse the right subtree
+        }
+
+        // Iterative approach using a stack can also be used to perform in-order traversal
+
+        private void InorderIterative(TreeNode root, List<int> result)
+        {
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            TreeNode current = root;
+            while (current != null || stack.Count > 0)
+            {
+                // Reach the left most Node of the current Node
+                while (current != null)
+                {
+                    stack.Push(current);
+                    current = current.left;
+                }
+                // Current must be null at this point
+                current = stack.Pop();
+                result.Add(current.val); // Visit the root node
+                // We have visited the node and its left subtree. Now, it's right subtree's turn
+                current = current.right;
+            }
         }
     }
 }

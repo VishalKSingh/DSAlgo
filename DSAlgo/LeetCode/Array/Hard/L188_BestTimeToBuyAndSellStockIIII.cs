@@ -16,7 +16,7 @@ namespace DSAlgo.LeetCode.Array.Hard
         public int MaxProfit(int k, int[] prices)
         {
             if (prices.Length == 0 || k == 0) return 0;
-
+            // If k is greater than or equal to half the number of days, we can perform as many transactions as we want
             if (k >= prices.Length / 2)
             {
                 int maxProfit = 0;
@@ -68,6 +68,7 @@ namespace DSAlgo.LeetCode.Array.Hard
             // Using a 1D array to store the maximum profit for each day
             int[] dp = new int[prices.Length];
             // Initialize the dp array to 0, as no profit can be made initially
+            dp[0] = 0;
             for (int i = 1; i <= k; i++)
             {
                 int maxDiff = -prices[0]; // Initialize maxDiff to the negative price of the first day

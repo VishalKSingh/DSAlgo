@@ -20,8 +20,10 @@ namespace DSAlgo.LeetCode.Tree.Medium
                 return null; // Base case: if the root is null, return null
             }
 
+            // Start with the leftmost node of the tree
             Node leftmost = root;
 
+            // Iterate through each level of the tree until we reach the last level
             while (leftmost.left != null)
             {
                 Node head = leftmost;
@@ -43,6 +45,8 @@ namespace DSAlgo.LeetCode.Tree.Medium
         }
 
         // Above problem can also be solved using Queue
+        // Time Complexity: O(n) where n is the number of nodes in the tree
+        // Space Complexity: O(n) in the worst case when the last level of the tree is full
         public Node ConnectQueue(Node root)
         {
             if (root == null)

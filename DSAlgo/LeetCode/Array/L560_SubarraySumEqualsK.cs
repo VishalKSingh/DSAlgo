@@ -25,7 +25,7 @@ namespace DSAlgo.LeetCode.Array
 
         public int SubarraySum(int[] nums, int k)
         {
-            Dictionary<int, int> map = new Dictionary<int, int>();
+            Dictionary<int, int> map = new Dictionary<int, int>(); // Key: cumulative sum, Value: frequency of that cumulative sum
             map[0] = 1; // Initialize with sum 0
             int count = 0;
             int sum = 0;
@@ -35,6 +35,7 @@ namespace DSAlgo.LeetCode.Array
                 sum += num; // Update the cumulative sum
 
                 // Check if there is a subarray with sum equal to k
+                // in order to get sum of a subarray to be equal to k, the cumulative sum at the end of that subarray should be equal to (current cumulative sum - k)
                 if (map.ContainsKey(sum - k))
                 {
                     count += map[sum - k]; // Increment count by the frequency of the cumulative sum that equals (current sum - k)
@@ -53,6 +54,10 @@ namespace DSAlgo.LeetCode.Array
 
             return count;
         }
+
+
+
+
 
         // The above solution uses a hash map to store the cumulative sum and its frequency
         // This allows us to find the number of subarrays with sum equal to k in O(1) time
@@ -73,7 +78,7 @@ namespace DSAlgo.LeetCode.Array
         //         for (int j = i; j < nums.Length; j++)
         //         {
         //             sum += nums[j];
-            
+
         //             if (sum == k)
         //             {
         //                 count++;
@@ -82,7 +87,7 @@ namespace DSAlgo.LeetCode.Array
         //     }
         //     return count;
         // }
-     
+
         // The above solution uses a hash map to store the cumulative sum and its frequency
         // This allows us to find the number of subarrays with sum equal to k in O(1) time
         // The overall time complexity is O(n) and space complexity is O(n)
@@ -96,6 +101,33 @@ namespace DSAlgo.LeetCode.Array
         // The final count is returned as the result
 
 
+        //Optimized version
+        // using two pointers to find the subarrays with sum equal to k
+        // This approach is not efficient for all cases, but it can be used when the array contains only positive numbers
 
+
+        public int SubarraySumTwoPointers(int[] nums, int k)
+        {
+            int count = 0;
+            int sum = 0;
+            int left = 0;
+            for (int right = 0; right < nums.Length; right++)
+            {
+                sum += nums[right]; // Update the cumulative sum
+                // Move the left pointer to maintain the sum less than or equal to k
+                while (sum > k && left <= right)
+                {
+                    sum -= nums[left]; // Remove the leftmost element from the sum
+                    left++; // Move the left pointer to the right
+                }
+                // If the current sum is equal to k, increment the count
+                if (sum == k)
+                {
+                    count++;
+                }
+            }
+            return count;
+
+        }
     }
 }

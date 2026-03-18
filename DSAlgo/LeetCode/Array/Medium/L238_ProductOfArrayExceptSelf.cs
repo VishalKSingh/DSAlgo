@@ -50,13 +50,13 @@ namespace DSAlgo.LeetCode.Array.Medium
 
             for (int i = 0; i < n; i++)
             {
-                result[i] = leftProducts[i] * rightProducts[i];
+                result[i] = leftProducts [i] * rightProducts[i];
             }
 
             return result;
         }
 
-        // Optimized version without using extra space for left and right products
+        // Optimized version
         // This version uses the result array to store the left products and then calculates the right products in a single pass.
         // The time complexity is still O(n) and the space complexity is O(1) for the left and right product arrays.
         // The result array is used to store the left products in the first pass.

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Array.Easy
 {
-    internal class L26_RemoveDuplicatesFromSortedArray
+    public static class L26_RemoveDuplicatesFromSortedArray
     {
         // This problem is about removing duplicates from a sorted array in-place
         // The function should return the new length of the array after removing duplicates
         // Time Complexity: O(n) where n is the length of the array
         // Space Complexity: O(1) since we are modifying the array in place
 
-        public int RemoveDuplicates(int[] nums)
+        public static int RemoveDuplicates(int[] nums)
         {
             if (nums.Length == 0) return 0; // If the array is empty, return 0
 

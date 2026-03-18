@@ -18,7 +18,7 @@ namespace DSAlgo.LeetCode.Tree.Medium
             }
 
             int rootValue = preorder[0]; // The first element of preorder is the root value
-            TreeNode root = new TreeNode(rootValue); // Create a new node for the root
+            TreeNode root = new(rootValue); // Create a new node for the root
 
             int rootIndexInInorder = Array.IndexOf(inorder, rootValue); // Find the index of the root in inorder array
 
@@ -30,6 +30,8 @@ namespace DSAlgo.LeetCode.Tree.Medium
         }
 
         // Construct Binary Tree from Preorder and Inorder Traversal in optimal way
+        // Time Complexity: O(n) where n is the number of nodes in the tree
+        // Space Complexity: O(h) where h is the height of the tree due to recursion stack and O(n) for the dictionary
         public TreeNode BuildTreeOptimal(int[] preorder, int[] inorder)
         {
             Dictionary<int, int> inorderIndexMap = new Dictionary<int, int>();

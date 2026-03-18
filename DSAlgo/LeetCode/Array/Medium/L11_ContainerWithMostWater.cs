@@ -26,7 +26,7 @@ namespace DSAlgo.LeetCode.Array
                 int area = Math.Min(height[left], height[right]) * (right - left);
                 maxArea = Math.Max(maxArea, area);
 
-                // Move the pointer pointing to the shorter line towards the other pointer
+                // Move the pointer,s pointing to the shorter line towards the other pointer
                 if (height[left] < height[right])
                 {
                     left++;

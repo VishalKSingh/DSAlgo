@@ -15,7 +15,7 @@ namespace DSAlgo.LeetCode.Array.Medium
 
         public int FindDuplicate(int[] nums)
         {
-            int slow = nums[0];
+            int slow = nums[0]; 
             int fast = nums[0];
 
             // Phase 1: Finding the intersection point in the cycle

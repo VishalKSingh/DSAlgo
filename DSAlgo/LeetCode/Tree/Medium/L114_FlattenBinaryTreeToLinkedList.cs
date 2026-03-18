@@ -44,7 +44,35 @@ namespace DSAlgo.LeetCode.Tree.Medium
             current.right = tempRight;
         }
 
-        // 
+
+        //Optimized approach using Morris Traversal
+        // This approach avoids the need for recursion and uses O(1) space
+
+        public void FlattenOptimized(TreeNode root)
+        {
+            TreeNode current = root;
+            while (current != null)
+            {
+                if (current.left != null)
+                {
+                    // Find the rightmost node of the left subtree
+                    TreeNode rightmost = current.left;
+                    while (rightmost.right != null)
+                    {
+                        rightmost = rightmost.right;
+                    }
+                    // Connect the rightmost node to the current's right subtree
+                    rightmost.right = current.right;
+                    // Move the left subtree to the right
+                    current.right = current.left;
+                    current.left = null; // Set left child to null
+                }
+                // Move to the next node
+                current = current.right;
+            }
+        }
+
+
 
         // Definition for a binary tree node.
         public class TreeNode

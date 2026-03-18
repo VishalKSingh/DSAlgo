@@ -31,6 +31,7 @@ namespace DSAlgo.LeetCode.Array.Hard
 
                 if (height[left] < height[right])
                 {
+                    // we check if the current height at the left pointer is greater than or equal to leftMax.
                     if (height[left] >= leftMax)
                     {
                         leftMax = height[left];

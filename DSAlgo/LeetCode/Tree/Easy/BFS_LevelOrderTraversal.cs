@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Tree.Easy
 {
-    public class LevelOrderTraversal
+    public class BFS_LevelOrderTraversal
     {
         // This problem is about traversing a binary tree in level order
         // Level order traversal means visiting all nodes at the present depth level before moving on to the nodes at the next depth level

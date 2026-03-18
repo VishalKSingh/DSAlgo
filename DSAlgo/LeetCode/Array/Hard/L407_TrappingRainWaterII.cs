@@ -21,7 +21,6 @@
 //            // The priority queue will store tuples of (height, index) where index is calculated as i * n + j
 //            // This allows us to efficiently get the cell with the minimum height
 //            // PriorityQueue is a custom implementation or can be replaced with a suitable library
-//            // Note: In C#, you can use SortedSet or a custom priority queue implementation
 //            // to achieve similar functionality as a min-heap.
 //            // The priority queue will help us process the cells in order of their heights
 //            // Directions array to move in the four possible directions (up, right, down, left)
@@ -67,3 +66,55 @@
 //        }
 //    }
 //}
+
+internal class L407_TrappingRainWaterII
+{
+
+    public L407_TrappingRainWaterII() { }
+    
+    public L407_TrappingRainWaterII(int[][] heightMap)
+    {
+        int result = TrapRainWater(heightMap);
+        Console.WriteLine(result);
+    }
+
+    public int TrapRainWater(int[][] heightMap)
+    {
+        if (heightMap == null || heightMap.Length == 0 || heightMap[0].Length == 0) return 0;
+        int m = heightMap.Length, n = heightMap[0].Length;
+        bool[,] visited = new bool[m, n];
+        PriorityQueue<(int, int), int> pq = new PriorityQueue<(int, int), int>();
+        int[] directions = { 0, 1, 0, -1, 0 };
+        int waterTrapped = 0;
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                // Add boundary cells to the priority queue
+                if (i == 0 || i == m - 1 || j == 0 || j == n - 1)
+                {
+                    pq.Enqueue((heightMap[i][j], i * n + j), heightMap[i][j]);
+                    visited[i, j] = true;
+                }
+            }
+        }
+        while (pq.Count > 0)
+        {
+            var (height, index) = pq.Dequeue();
+            int x = index / n, y = index % n;
+            for (int d = 0; d < 4; d++)
+            {
+                int nx = x + directions[d], ny = y + directions[d + 1];
+                if (nx >= 0 && nx < m && ny >= 0 && ny < n && !visited[nx, ny])
+                {
+                    visited[nx, ny] = true;
+                    waterTrapped += Math.Max(0, height - heightMap[nx][ny]);
+                    pq.Enqueue((Math.Max(height, heightMap[nx][ny]), nx * n + ny), Math.Max(height, heightMap[nx][ny]));
+                }
+            }
+        }
+        return waterTrapped;
+    }
+
+
+}
