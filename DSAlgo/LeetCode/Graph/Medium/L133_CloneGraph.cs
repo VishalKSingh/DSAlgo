@@ -55,5 +55,33 @@ namespace DSAlgo.LeetCode.Graph.Medium
         // can you optimize this code further?
         // The current implementation is already efficient with a time complexity of O(V + E) and space complexity of O(V).
 
+
+        // Alternative BFS solution
+
+        public Node CloneGraphBFS(Node node)
+        {
+            if (node == null) return null;
+            var visited = new Dictionary<Node, Node>();
+            var queue = new Queue<Node>();
+            var cloneNode = new Node(node.val); // Create a clone of the starting node
+            visited[node] = cloneNode; // Mark the node as visited and store its clone
+            queue.Enqueue(node);
+            while (queue.Count > 0)
+            {
+                var currentNode = queue.Dequeue();
+                foreach (var neighbor in currentNode.neighbors)
+                {
+                    if (!visited.ContainsKey(neighbor))
+                    {
+                        var neighborClone = new Node(neighbor.val);
+                        visited[neighbor] = neighborClone; // Mark the neighbor as visited and store its clone
+                        queue.Enqueue(neighbor);
+                    }
+                    // Add the cloned neighbor to the current node's clone neighbors list
+                    visited[currentNode].neighbors.Add(visited[neighbor]);
+                }
+            }
+            return cloneNode;
+        }
     }
 }

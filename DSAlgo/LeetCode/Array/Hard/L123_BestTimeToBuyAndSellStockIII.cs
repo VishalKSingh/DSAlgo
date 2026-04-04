@@ -59,8 +59,29 @@ namespace DSAlgo.LeetCode.Array.Hard
             return maxProfit;
         }
 
- 
+        // Optimized Space Complexity: O(1)
+        public int MaxProfitOptimized(int[] prices)
+        {
+            int n = prices.Length;
+            if (n < 2) return 0;
+            int maxProfit = 0;
+            int minPrice = prices[0];
+            int maxPrice = prices[n - 1];
+            int leftProfit = 0;
+            int rightProfit = 0;
+            for (int i = 1; i < n; i++)
+            {
+                minPrice = Math.Min(minPrice, prices[i]); // this is the minimum price we can buy at up to day i
+                leftProfit = Math.Max(leftProfit, prices[i] - minPrice); // this is the max profit we can get by selling at prices[i] after buying at minPrice
+                maxPrice = Math.Max(maxPrice, prices[n - 1 - i]); // this is the maximum price we can sell at from the right up to day n - 1 - i
+                rightProfit = Math.Max(rightProfit, maxPrice - prices[n - 1 - i]);// this is the max profit we can get by buying at current price prices[n - 1 - i] and selling at maxPrice
+                maxProfit = Math.Max(maxProfit, leftProfit + rightProfit);
+            }
+            return maxProfit;
+        }
 
 
-    }
+
+
+     }
 }

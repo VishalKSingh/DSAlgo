@@ -76,7 +76,7 @@ namespace DSAlgo.LeetCode.DP.Medium
         // Space Complexity: O(n) for the recursion stack
         public int RobRecursiveNoMemo(int[] nums)
         {
-            return RobHelperNoMemo(nums, 0);
+            return RobHelperNoMemo(nums, 0);// Start the recursive helper function from the first house
 
         }
         private int RobHelperNoMemo(int[] nums, int index)

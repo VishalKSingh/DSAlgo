@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.DP.Medium
 {
-    internal class L62UniquePaths
+    internal class L62_UniquePaths
     {
         // This problem is to find the number of unique paths from the top-left corner to the bottom-right corner of a grid.
         // You can only move either down or right at any point in time.
@@ -73,7 +73,7 @@ namespace DSAlgo.LeetCode.DP.Medium
         // Space Complexity: O(n) since we are using a 1D array to store the results for the current row
         public int UniquePathsOneDArray(int m, int n)
         {
-            int[] dp = new int[n];
+            int[] dp = new int[n]; // Create a 1D array to store the number of unique paths to each cell in the current row
             dp[0] = 1; // There's one way to reach the first cell
 
             // Initialize the first row
@@ -82,7 +82,7 @@ namespace DSAlgo.LeetCode.DP.Medium
                 // Update the first cell of the current row
                 for (int j = 1; j < n; j++)
                 {
-                    dp[j] += dp[j - 1]; // Update the current cell based on the cell abovedp[j] and to the left dp[j-1
+                    dp[j] += dp[j - 1]; // Update the current cell based on the cell above dp[j] and to the left dp[j-1]
                 }
             }
 
@@ -103,6 +103,7 @@ namespace DSAlgo.LeetCode.DP.Medium
             // Calculate the binomial coefficient C(N, K)
             for (int i = 0; i < K; i++)
             {
+                // To avoid overflow, we calculate the result iteratively by multiplying and dividing at each step
                 result *= (N - i); // Multiply by (N - i)
                 result /= (i + 1); // Divide by (i + 1)
             }

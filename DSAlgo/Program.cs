@@ -1,5 +1,6 @@
 ﻿
 using DSAlgo.LeetCode.Array.Easy;
+using DSAlgo.LeetCode.Array.Hard;
 using DSAlgo.LeetCode.Array.Medium;
 using DSAlgo.LeetCode.Design;
 using DSAlgo.LeetCode.DP.Medium;
@@ -73,5 +74,8 @@ var queries = new List<IList<string>>
 //var encoded = EncodeBase62(125346);
 //Console.WriteLine(encoded);
 
-var result = new L1283_SmallestDivisorGivenaThreshold();
-result.SmallestDivisor(new int[] { 1, 2, 5, 9 }, 6);
+var result = new L123_BestTimeToBuyAndSellStockIII();
+Console.WriteLine(result.MaxProfitOptimized(new int[] {3,3,5,0,0,3,1,4}));
+//K:\Code\DSAlgo\DSAlgo\bin\Debug\net8.0\DSAlgo.exe
+
+// How to read the details of the DSAlgo.exe file:

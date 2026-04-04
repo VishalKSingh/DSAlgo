@@ -55,6 +55,7 @@ namespace DSAlgo.LeetCode.Graph.Medium
         }
 
         // Alternative BFS solution
+        // Time complexity and space complexity are the same as the DFS solution, but BFS uses a queue instead of recursion
         public int NumIslandsBFS(char[][] grid)
         {
             if (grid == null || grid.Length == 0 || grid[0].Length == 0) return 0;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array
+namespace DSAlgo.LeetCode.Array.Medium
 {
     public class L309_BestTimeToBuyAndSellStockWithCooldown
     {
@@ -48,6 +48,7 @@ namespace DSAlgo.LeetCode.Array
             int n = prices.Length;
             if (n == 0) return 0;
 
+            // We only need to keep track of the last two sell profits and the last buy profit
             int buy = -prices[0]; // Initial state, we buy stock on day 0
             int sell = 0; // Initial state, we don't sell stock on day 0
             int prevSell = 0; // Previous day's sell profit
