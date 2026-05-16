@@ -54,6 +54,33 @@ namespace DSAlgo.LeetCode.Graph.Medium
             DFS(grid, visited, row, col + 1); // Right
         }
 
+
+        // using stack for iterative DFS
+        private void DFSIterative(char[][] grid, bool[,] visited, int row, int col)
+        {
+            int numRows = grid.Length;
+            int numCols = grid[0].Length;
+            Stack<(int, int)> stack = new Stack<(int, int)>();
+            stack.Push((row, col));
+            visited[row, col] = true;
+            while (stack.Count > 0)
+            {
+                var (currentRow, currentCol) = stack.Pop();
+                // Explore all four directions
+                foreach (var (dr, dc) in new[] { (-1, 0), (1, 0), (0, -1), (0, 1) })
+                {
+                    int newRow = currentRow + dr;
+                    int newCol = currentCol + dc;
+                    if (newRow >= 0 && newRow < numRows && newCol >= 0 && newCol < numCols &&
+                                               !visited[newRow, newCol] && grid[newRow][newCol] == '1')
+                    {
+                        visited[newRow, newCol] = true;
+                        stack.Push((newRow, newCol));
+                    }
+                }
+            }
+        }
+
         // Alternative BFS solution
         // Time complexity and space complexity are the same as the DFS solution, but BFS uses a queue instead of recursion
         public int NumIslandsBFS(char[][] grid)

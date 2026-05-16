@@ -27,7 +27,6 @@ namespace DSAlgo.LeetCode.Graph
            
         }
 
-        // You can add more DFS-related methods as needed
         // For example, you can implement DFS for graph traversal, path finding,finding paths in a maze, Maximum Depth of Binary Tree etc.
         // This class can be used as a base for implementing DFS algorithms in various graph-related problems
         // For example, you can implement DFS for finding connected components in a graph,
@@ -83,6 +82,27 @@ namespace DSAlgo.LeetCode.Graph
                     }
                 }
             }
+        }
+
+
+        public void DFS2DGridTraversal(int[][] grid, int startRow, int startCol)
+        {
+            var visited = new HashSet<(int, int)>();
+            DFSUtil2D(grid, startRow, startCol, visited);
+        }
+
+        public void DFSUtil2D(int[][] grid, int row, int col, HashSet<(int, int)> visited)
+        {
+            // Check for out of bounds and if the current cell is already visited
+            if (row < 0 || row >= grid.Length || col < 0 || col >= grid[0].Length || visited.Contains((row, col)))
+                return;
+            visited.Add((row, col));
+            Console.WriteLine($"Visited cell: ({row}, {col})");
+            // Explore all four directions
+            DFSUtil2D(grid, row - 1, col, visited); // Up
+            DFSUtil2D(grid, row + 1, col, visited); // Down
+            DFSUtil2D(grid, row, col - 1, visited); // Left
+            DFSUtil2D(grid, row, col + 1, visited); // Right
         }
     }
 }

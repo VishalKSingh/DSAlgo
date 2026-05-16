@@ -4,6 +4,10 @@ namespace DSAlgo.LeetCode.Graph
 {
     internal class Graph
     {
+        // This class represents a directed graph using an adjacency list.
+        // The graph is implemented as a dictionary where the keys are node identifiers (integers) and the values are
+        // lists of neighboring nodes (also integers).
+        // The class provides methods to add nodes, add edges, retrieve neighbors of a node, and get all nodes in the graph.
         private readonly Dictionary<int, List<int>> adjList = new();
 
         // Add a node to the graph

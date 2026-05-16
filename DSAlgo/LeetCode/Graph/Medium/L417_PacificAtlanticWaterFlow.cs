@@ -64,14 +64,14 @@ namespace DSAlgo.LeetCode.Graph.Medium
             visited[row, col] = true;
 
             // Explore all four directions
-            foreach (var dir in new[] { (-1, 0), (1, 0), (0, -1), (0, 1) })
+            int[][] directions = { [1, 0], [-1, 0], [0, 1], [0, -1] };
+            foreach (var dir in directions)
             {
                 // Calculate new row and column indices based on the current direction
-                int newRow = row + dir.Item1; 
-                int newCol = col + dir.Item2;
+                int newRow = row + dir[0]; 
+                int newCol = col + dir[1];
 
-                if (newRow >= 0 && newRow < m && newCol >= 0 && newCol < n &&
-                                       heights[newRow][newCol] >= heights[row][col])
+                if (newRow >= 0 && newRow < m && newCol >= 0 && newCol < n && heights[newRow][newCol] >= heights[row][col])
                 {
                     DFS(heights, visited, newRow, newCol);
                 }

@@ -81,7 +81,7 @@
                 }
                 else
                 {
-                    word.Insert(0, s[i]);
+                    word.Insert(0, s[i]);// Insert the character at the beginning of the word
                 }
             }
 

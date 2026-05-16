@@ -27,6 +27,8 @@ namespace DSAlgo.LeetCode.Graph.Medium
             // Mark all 'O's connected to the border as 'E' (escaped)
             for (int i = 0; i < numRows; i++)
             {
+                // Check the first and last column for 'O's
+                // If an 'O' is found, perform DFS to mark all connected 'O's as 'E'
                 if (board[i][0] == 'O') DFS(board, i, 0);
                 if (board[i][numCols - 1] == 'O') DFS(board, i, numCols - 1);
             }
@@ -52,8 +54,7 @@ namespace DSAlgo.LeetCode.Graph.Medium
         private void DFS(char[][] board, int row, int col)
         {
             // Check if the current cell is out of bounds or not an 'O'
-            if (row < 0 || row >= board.Length || col < 0 || col >= board[0].Length ||
-                               board[row][col] != 'O')
+            if (row < 0 || row >= board.Length || col < 0 || col >= board[0].Length || board[row][col] != 'O')
                 return;
 
             // Mark the cell as escaped
@@ -74,7 +75,8 @@ namespace DSAlgo.LeetCode.Graph.Medium
 
             int numRows = board.Length;
             int numCols = board[0].Length;
-            Queue<(int, int)> queue = new Queue<(int, int)>();
+            
+            Queue<(int, int)> queue = new Queue<(int, int)>(); //
 
             // Enqueue all 'O's connected to the border
             for (int i = 0; i < numRows; i++)

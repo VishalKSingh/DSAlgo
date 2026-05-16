@@ -10,7 +10,7 @@ namespace DSAlgo.LeetCode.Graph
     {
        
 
-        //  finding the shortest path in an unweighted graph or for traversing a tree structure.
+        // finding the shortest path in an unweighted graph or for traversing a tree structure.
         // finding connected components in a graph,"Word Ladder" or "Shortest Path in a Grid".
         
         // finding the shortest path in a maze, "Minimum Depth of Binary Tree" using BFS traversal.

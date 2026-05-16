@@ -67,48 +67,53 @@ namespace DSAlgo.LeetCode.Graph.Medium
         }
 
         // Optimized version using Kahn's algorithm for topological sorting
+        // Kahn's algorithm is an efficient way to perform topological sorting and can be used to determine if a cycle exists in the graph.
         public bool CanFinishOptimized(int numCourses, int[][] prerequisites)
         {
-                var indegree = new int[numCourses];
-                var graph = new List<int>[numCourses];
+            //## Form Adjancency List and Indegree Array
+            var indegree = new int[numCourses]; // number of prerequisites for each course
+            var graph = new List<int>[numCourses]; // Initialize the graph as an adjacency list
 
-                for (int i = 0; i < numCourses; i++)
+            for (int i = 0; i < numCourses; i++)
+            {
+                graph[i] = new List<int>();
+            }
+
+            foreach (var prereq in prerequisites)
+            {
+                graph[prereq[1]].Add(prereq[0]); // Build the graph from the prerequisites
+                indegree[prereq[0]]++; // Increment the indegree for the course that has a prerequisite
+            }
+
+            //## Initialize Queue with Courses that have No Prerequisites
+            var queue = new Queue<int>(); // courses with no prerequisites (indegree of 0)
+            for (int i = 0; i < numCourses; i++)
+            {
+                if (indegree[i] == 0)
                 {
-                    graph[i] = new List<int>();
+                    queue.Enqueue(i); // If a course has no prerequisites, add it to the queue
                 }
+            }
 
-                foreach (var prereq in prerequisites)
-                {
-                    graph[prereq[1]].Add(prereq[0]);
-                    indegree[prereq[0]]++;
-                }
+            //## Process the Queue and Count Completed Courses
 
-                var queue = new Queue<int>();
-                for (int i = 0; i < numCourses; i++)
+            int count = 0; // Number of courses that can be completed
+            while (queue.Count > 0)
+            {
+                var course = queue.Dequeue();// Dequeue a course with no prerequisites
+                count++; // Increment the count of completed courses
+
+                foreach (var neighbor in graph[course])
                 {
-                    if (indegree[i] == 0)
+                    indegree[neighbor]--; // Decrease the indegree of neighboring courses (courses that depend on the current course)
+                    if (indegree[neighbor] == 0)
                     {
-                        queue.Enqueue(i);
+                        queue.Enqueue(neighbor); // If a neighboring course has no remaining prerequisites, add it to the queue
                     }
                 }
+            }
 
-                int count = 0;
-                while (queue.Count > 0)
-                {
-                    var course = queue.Dequeue();
-                    count++;
-
-                    foreach (var neighbor in graph[course])
-                    {
-                        indegree[neighbor]--;
-                        if (indegree[neighbor] == 0)
-                        {
-                            queue.Enqueue(neighbor);
-                        }
-                    }
-                }
-
-                return count == numCourses; // If we processed all courses, return true
+            return count == numCourses; // If we processed all courses, return true
         }
     }
 }
