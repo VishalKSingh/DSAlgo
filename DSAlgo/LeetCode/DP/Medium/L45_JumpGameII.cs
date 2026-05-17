@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array.Medium
+namespace DSAlgo.LeetCode.DP.Medium
 {
     internal class L45_JumpGameII
     {

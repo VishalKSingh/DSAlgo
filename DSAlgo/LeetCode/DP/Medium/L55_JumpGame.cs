@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array.Medium
+namespace DSAlgo.LeetCode.DP.Medium
 {
     internal class L55_JumpGame
     {
@@ -37,13 +37,15 @@ namespace DSAlgo.LeetCode.Array.Medium
         public bool CanJumpRecursiveMemo(int[] nums)
         {
             int n = nums.Length;
-            bool[] memo = new bool[n]; // Initialize a memoization array to store results of subproblems
+            bool[] memo = new bool[n]; // store results of subproblems
             return CanJumpHelper(nums, 0, memo); // Start the recursive helper function from the first index
         }
         private bool CanJumpHelper(int[] nums, int index, bool[] memo)
         {
             if (index >= nums.Length - 1) return true; // If we reach or exceed the last index, return true
+            
             if (memo[index]) return false; // If we have already computed this index and it's not reachable, return false
+            
             memo[index] = true; // Mark this index as visited
             // Try to jump to all reachable indices from the current index
             for (int i = 1; i <= nums[index]; i++)
@@ -54,6 +56,8 @@ namespace DSAlgo.LeetCode.Array.Medium
         }
 
         // using dynamic programming
+        // Time Complexity: O(n^2) in the worst case, where n is the length of the array, because for each index we may check all subsequent indices up to nums[i]
+        // Space Complexity: O(n) due to the dp array
         public bool CanJumpDP(int[] nums)
         {
             int n = nums.Length;
