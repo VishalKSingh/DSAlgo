@@ -11,61 +11,9 @@ namespace DSAlgo.LeetCode.DP.Medium
         // This is a dynamic programming problem where we want to maximize the amount of money we can rob from houses arranged in a line,
         // given that we cannot rob two adjacent houses.
 
-        // The idea is to use a bottom-up approach to build up the solution iteratively.
-        // We maintain two variables, prev1 and prev2, which represent the maximum amount of money we can rob up to the previous house and the house
-        // before that, respectively.
-        // For each house, we have two choices: either rob it or skip it.
-        // If we rob the current house, we add its value to prev2.
-        // If we skip it, we take the maximum amount we can rob up to the previous house (prev1).
-        // We update prev1 and prev2 accordingly and continue until we reach the last house.
-        // The final result is stored in prev1, which represents the maximum amount we can rob from all houses.
-        // Time Complexity: O(n) where n is the number of houses
-        // Space Complexity: O(1) since we are using only a constant amount of space
-        public int Rob(int[] nums)
-        {
-            if (nums.Length == 0) return 0;
-            if (nums.Length == 1) return nums[0];
+        
 
-            int prevHouse = 0; // Maximum amount we can rob up to the previous house
-            int houseBeforePrev = 0; // Maximum amount we can rob up to the house before the previous one
-
-            foreach (var house in nums)
-            {
-                int temp = prevHouse;
-                prevHouse = Math.Max(houseBeforePrev + house, prevHouse);
-                houseBeforePrev = temp;
-            }
-
-            return prevHouse;
-        }
-
-        // This is a recursive approach with memoization
-        // The function takes an array of house values and an index representing the current house.
-        // It uses a dictionary to store the results of previously calculated houses to avoid redundant calculations.
-        // The function checks if the current house is the last one or if it has already been calculated.
-        // If not, it calculates the maximum amount we can rob by either robbing the current house and skipping the next one,
-        // or skipping the current house and robbing the next one.
-        // The final result is stored in the dictionary and returned.
-        // Time Complexity: O(n) where n is the number of houses
-        // Space Complexity: O(n) for the memoization dictionary
-        public int RobRecursive(int[] nums)
-        {
-            Dictionary<int, int> memo = new Dictionary<int, int>();
-            return RobHelper(nums, 0, memo);
-        }
-        private int RobHelper(int[] nums, int index, Dictionary<int, int> memo)
-        {
-            if (index >= nums.Length) return 0;
-            if (memo.ContainsKey(index)) return memo[index];
-
-            // Calculate the maximum amount we can rob by either robbing the current house or skipping it
-            int rob = nums[index] + RobHelper(nums, index + 2, memo);
-            int skip = RobHelper(nums, index + 1, memo);
-
-            // Store the result in the memo dictionary
-            memo[index] = Math.Max(rob, skip);
-            return memo[index];
-        }
+        
 
         // This is a recursive approach without memoization
         // The function takes an array of house values and an index representing the current house.
@@ -89,6 +37,34 @@ namespace DSAlgo.LeetCode.DP.Medium
             int skip = RobHelperNoMemo(nums, index + 1);
 
             return Math.Max(rob, skip);
+        }
+
+        // This is a recursive approach with memoization
+        // The function takes an array of house values and an index representing the current house.
+        // It uses a dictionary to store the results of previously calculated houses to avoid redundant calculations.
+        // The function checks if the current house is the last one or if it has already been calculated.
+        // If not, it calculates the maximum amount we can rob by either robbing the current house and skipping the next one,
+        // or skipping the current house and robbing the next one.
+        // The final result is stored in the dictionary and returned.
+        // Time Complexity: O(n) where n is the number of houses
+        // Space Complexity: O(n) for the memoization dictionary
+        public int RobRecursive(int[] nums)
+        {
+            Dictionary<int, int> memo = new Dictionary<int, int>();// Create a dictionary to store the results of previously calculated houses
+            return RobHelper(nums, 0, memo);
+        }
+        private int RobHelper(int[] nums, int index, Dictionary<int, int> memo)
+        {
+            if (index >= nums.Length) return 0;
+            if (memo.ContainsKey(index)) return memo[index];
+
+            // Calculate the maximum amount we can rob by either robbing the current house or skipping it
+            int rob = nums[index] + RobHelper(nums, index + 2, memo);
+            int skip = RobHelper(nums, index + 1, memo);
+
+            // Store the result in the memo dictionary
+            memo[index] = Math.Max(rob, skip);
+            return memo[index];
         }
 
         // This is a tabulation approach using bottom-up approach.
@@ -116,6 +92,39 @@ namespace DSAlgo.LeetCode.DP.Medium
             }
 
             return dp[n - 1];
+        }
+
+
+        // The idea is to use a bottom-up approach to build up the solution iteratively.
+        // We maintain two variables, prev1 and prev2, which represent the maximum amount of money we can rob up to the previous house and the house
+        // before that, respectively.
+        // For each house, we have two choices: either rob it or skip it.
+        // If we rob the current house, we add its value to prev2.
+        // If we skip it, we take the maximum amount we can rob up to the previous house (prev1).
+        // We update prev1 and prev2 accordingly and continue until we reach the last house.
+        // The final result is stored in prev1, which represents the maximum amount we can rob from all houses.
+        // Time Complexity: O(n) where n is the number of houses
+        // Space Complexity: O(1) since we are using only a constant amount of space
+        public int Rob(int[] nums)
+        {
+            if (nums.Length == 0) return 0;
+            if (nums.Length == 1) return nums[0];
+
+            int prevHouse = 0; // Maximum amount we can rob up to the previous house
+            int houseBeforePrev = 0; // Maximum amount we can rob up to the house before the previous one
+
+            foreach (var house in nums)
+            {
+                int temp = prevHouse;
+                int maxProfitIfRobbed = houseBeforePrev + house; // If we rob the current house, we add its value to the maximum amount from two houses back
+                int maxProfitIfSkipped = prevHouse; // If we skip the current house, we take the maximum amount from the previous house
+                int maxProfit = Math.Max(maxProfitIfRobbed, maxProfitIfSkipped); // Choose the maximum of the two options
+                
+                prevHouse = maxProfit;
+                houseBeforePrev = temp;
+            }
+
+            return prevHouse;
         }
     }
 }
