@@ -20,6 +20,8 @@ namespace DSAlgo.LeetCode.Array.Medium
             foreach (int num in numSet)
             {
                 // Check if it's the start of a sequence
+                //If num-1 is not in the set then num is the smallest element of a run, so you should walk forward
+                //from it and count the whole run exactly once
                 if (!numSet.Contains(num - 1))
                 {
                     int currentNum = num;

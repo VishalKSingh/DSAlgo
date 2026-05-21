@@ -23,6 +23,8 @@ namespace DSAlgo.LeetCode.Array
 
         }
 
+        // using prefix sum and hash map to store the cumulative sum and its frequency
+        // The idea is to calculate the cumulative sum at each index and check if there is a previous cumulative sum that equals (current cumulative sum - k)
         public int SubarraySum(int[] nums, int k)
         {
             Dictionary<int, int> map = new Dictionary<int, int>(); // Key: cumulative sum, Value: frequency of that cumulative sum

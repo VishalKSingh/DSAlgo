@@ -4,6 +4,10 @@
     public class L322_CoinChange
     {
         /// https://leetcode.com/problems/coin-change/
+        /// // This problem is about finding the minimum number of coins needed to make a given amount using a set of coin denominations.
+        /// // The function should return the minimum number of coins needed to make the amount, or -1 if it is not possible to make that amount with the given coins.
+        /// // Time Complexity: O(n * m) where n is the amount and m is the number of coins, due to the nested loops
+        /// // Space Complexity: O(n) for the dp array
         public int CoinChange(int[] coins, int amount)
         {
             int[] dp = new int[amount + 1]; // dp[i] will be storing the minimum number of coins needed to make amount i
@@ -27,14 +31,13 @@
             // If dp[amount] is still amount + 1, it means we cannot make that amount with the given coins
             return dp[amount] == amount + 1 ? -1 : dp[amount];
         }
-        /// Time Complexity: O(n * m) where n is the amount and m is the number of coins
-        /// Space Complexity: O(n) for the dp array
-        /// This method calculates the minimum number of coins needed to make a given amount
-        ///  
-    }
 
-    /// The recursive approach with memoization
-    public int CoinChangeRecursive(int[] coins, int amount)
+
+        // The recursive approach with memoization
+        // This method uses a helper function to recursively calculate the minimum number of coins needed for a given amount, while using a dictionary to store previously calculated results to avoid redundant calculations.
+        // Time Complexity: O(n * m) where n is the amount and m is the number of coins, due to the recursive calls and memoization
+        // Space Complexity: O(n) for the memoization dictionary and the recursive call stack
+        public int CoinChangeRecursive(int[] coins, int amount)
         {
             Dictionary<int, int> memo = new Dictionary<int, int>(); // Create a dictionary to store the results of previously calculated amounts
             return CoinChangeHelper(coins, amount, memo);
@@ -53,6 +56,7 @@
             foreach (var coin in coins)
             {
                 int res = CoinChangeHelper(coins, amount - coin, memo); // Recursive call for the remaining amount
+                // If the result is valid (not -1), update minCoins with the minimum value found
                 if (res >= 0 && res < minCoins)
                 {
                     minCoins = res + 1; // Update minCoins if a valid solution is found
@@ -62,4 +66,4 @@
             return memo[amount]; // Return the minimum number of coins needed for this amount
         }
     }
-    }
+}

@@ -49,6 +49,7 @@ namespace DSAlgo.LeetCode.DP.Medium
         // If none of the words match or if all recursive calls return false, we store the result as false in the memoization dictionary and return false.
         public bool WordBreakRecursive(string s, IList<string> wordDict)
         {
+            // Create a dictionary to store the results of previously calculated substrings
             Dictionary<string, bool> memo = new Dictionary<string, bool>();
             return WordBreakHelper(s, wordDict, memo);
         }

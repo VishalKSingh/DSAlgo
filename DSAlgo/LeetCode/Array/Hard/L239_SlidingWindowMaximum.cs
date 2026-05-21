@@ -110,5 +110,37 @@ namespace DSAlgo.LeetCode.Array.Hard
             }
             return result;
         }
+
+        // using a max heap (priority queue) to find the maximum for each sliding window
+        // Time Complexity: O(n log k) for the max heap approach
+        // Space Complexity: O(k) for the max heap, but O(n) for the result array
+        public int[] MaxSlidingWindowMaxHeap(int[] nums, int k)
+        {
+            if (nums == null || nums.Length == 0 || k <= 0) return new int[0];
+            int n = nums.Length;
+            int[] result = new int[n - k + 1];
+            // PriorityQueue element = (value, index), priority = -value to get max-heap behavior
+            var maxHeap = new PriorityQueue<(int val, int idx), int>();
+
+            for (int i = 0; i < n; i++)
+            {
+                maxHeap.Enqueue((nums[i], i), -nums[i]);
+
+                if (i >= k - 1)
+                {
+                    // Remove expired elements (indices out of current window)
+                    // We need to ensure that the top of the heap is within the current window
+                    while (maxHeap.Count > 0 && maxHeap.Peek().idx <= i - k)
+                    {
+                        maxHeap.Dequeue();
+                    }
+
+                    // Now top is the max for the current window
+                    result[i - k + 1] = maxHeap.Peek().val;
+                }
+            }
+
+            return result;
+        }
     }
 }
