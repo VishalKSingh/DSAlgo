@@ -3,6 +3,7 @@ using DSAlgo.LeetCode.Array.Easy;
 using DSAlgo.LeetCode.Array.Hard;
 using DSAlgo.LeetCode.Array.Medium;
 using DSAlgo.LeetCode.Design;
+using DSAlgo.LeetCode.DP;
 using DSAlgo.LeetCode.DP.Medium;
 using DSAlgo.LeetCode.Graph;
 using DSAlgo.LeetCode.Graph.Medium;
@@ -74,8 +75,6 @@ var queries = new List<IList<string>>
 //var encoded = EncodeBase62(125346);
 //Console.WriteLine(encoded);
 
-var result = new L239_SlidingWindowMaximum();
-Console.WriteLine(String.Join(", ", result.MaxSlidingWindowMaxHeap(new int[] { 1, 3, -1, -3, 5, 3, 6, 7 }, 3)));
-//K:\Code\DSAlgo\DSAlgo\bin\Debug\net8.0\DSAlgo.exe
-
-// How to read the details of the DSAlgo.exe file:
+var result = new L2571_MinOperationToReducetoZero();
+var res = result.MinOperations(39);
+Console.WriteLine(res);
