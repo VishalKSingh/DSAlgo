@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array
+namespace DSAlgo.LeetCode.Array.Medium
 {
     public class L215_KthLargestElementInArray
     {
@@ -81,8 +81,11 @@ namespace DSAlgo.LeetCode.Array
         // The average time complexity of the Quickselect algorithm is O(n)
         // The worst-case time complexity is O(n^2) but this is rare
         // The space complexity is O(1) as we are using only a few variables
-        
-       
+
+
+        // The following method uses a priority queue (min-heap) to find the kth largest element
+        // Time Complexity: O(n log k) where n is the length of the input array
+        // Space Complexity: O(k) for the min-heap
         public int FindKthLargestUsingPriorityQueue(int[] nums, int k)
         {
             // Check if k is valid

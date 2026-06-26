@@ -4,27 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array
+namespace DSAlgo.LeetCode.Array.Medium
 {
     public class L560_SubarraySumEqualsK
     {
-        public L560_SubarraySumEqualsK()
-        {
-            // This problem is about finding the number of continuous subarrays that sum to a given value k
-            // The solution uses a hash map to store the cumulative sum and its frequency
-            // Time Complexity: O(n)
-            // Space Complexity: O(n)
-
-            int[] nums = { 1, 1, 1 };
-            int k = 2;
-            int result = SubarraySum(nums, k);
-            Console.WriteLine($"Number of subarrays with sum {k}: {result}");
-            Console.WriteLine(result);
-
-        }
-
         // using prefix sum and hash map to store the cumulative sum and its frequency
-        // The idea is to calculate the cumulative sum at each index and check if there is a previous cumulative sum that equals (current cumulative sum - k)
+        // The idea is to calculate the cumulative sum at each index and check if there is a previous cumulative sum that
+        // equals (current cumulative sum - k)
         public int SubarraySum(int[] nums, int k)
         {
             Dictionary<int, int> map = new Dictionary<int, int>(); // Key: cumulative sum, Value: frequency of that cumulative sum
@@ -37,7 +23,8 @@ namespace DSAlgo.LeetCode.Array
                 sum += num; // Update the cumulative sum
 
                 // Check if there is a subarray with sum equal to k
-                // in order to get sum of a subarray to be equal to k, the cumulative sum at the end of that subarray should be equal to (current cumulative sum - k)
+                // in order to get sum of a subarray to be equal to k, the cumulative sum at the end of that subarray should be equal
+                // to (current cumulative sum - k)
                 if (map.ContainsKey(sum - k))
                 {
                     count += map[sum - k]; // Increment count by the frequency of the cumulative sum that equals (current sum - k)

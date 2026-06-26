@@ -27,10 +27,10 @@ namespace DSAlgo.LeetCode.Tree.Easy
             // Perform level order traversal
             while (queue.Count > 0)
             {
-                int levelSize = queue.Count;
+                int nodesToProcess = queue.Count;
                 List<int> currentLevel = new List<int>();
 
-                for (int i = 0; i < levelSize; i++)
+                for (int i = 0; i < nodesToProcess; i++)
                 {
                     TreeNode currentNode = queue.Dequeue();// Dequeue the front node
                     currentLevel.Add(currentNode.val); // Add the value to the current level list

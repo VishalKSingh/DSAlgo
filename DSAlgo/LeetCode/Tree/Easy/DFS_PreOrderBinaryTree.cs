@@ -8,7 +8,6 @@ namespace DSAlgo.LeetCode.Tree.Easy
 {
     public class DFS_PreOrderBinaryTree
     {
-        // This problem is about traversing a binary tree in pre-order
         // Pre-order traversal means visiting the root node first, then the left subtree, and finally the right subtree
         // The recursive approach is used to traverse the tree
         // Time Complexity: O(n) where n is the number of nodes in the tree
@@ -51,7 +50,7 @@ namespace DSAlgo.LeetCode.Tree.Easy
                 {
                     stack.Push(currentNode.right);
                 }
-                if (currentNode.left != null)
+                if (currentNode.left != null) 
                 {
                     stack.Push(currentNode.left);
                 }

@@ -36,6 +36,8 @@ namespace DSAlgo.LeetCode.Array.Medium
         }
 
         // Brute Force Approach
+        // Time Complexity: O(n^2) because we are checking all possible substrings and counting the frequency of characters in each substring.
+        // Space Complexity: O(1) because we are using a fixed-size array of length 26 to count the frequency of characters. 
         public int CharacterReplacementBruteForce(string s, int k)
         {
             int maxLength = 0;

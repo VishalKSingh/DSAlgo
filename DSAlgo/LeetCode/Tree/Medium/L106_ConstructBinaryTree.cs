@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.Tree.Medium
 {
+    using System;
     public class L106_ConstructBinaryTree
     {
         public L106_ConstructBinaryTree() { }
@@ -50,18 +51,23 @@ namespace DSAlgo.LeetCode.Tree.Medium
             return root; // Return the constructed tree
         }
 
-        // Definition for a binary tree node.
-        public class TreeNode
+
+        // Recursive approach to construct binary tree from inorder and postorder traversal
+        // Time Complexity: O(n) where n is the number of nodes in the tree
+        // Space Complexity: O(h) where h is the height of the tree due to recursion stack
+        public TreeNode BuildTreeRecursive(int[] inorder, int[] postorder)
         {
-            public int val;
-            public TreeNode left;
-            public TreeNode right;
-            public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+            if (inorder.Length == 0 || postorder.Length == 0)
             {
-                this.val = val;
-                this.left = left;
-                this.right = right;
+                return null; // Base case: if either array is empty, return null
             }
+            int rootValue = postorder[^1]; // The last element of postorder is the root value
+            TreeNode root = new TreeNode(rootValue); // Create a new node for the root
+            int rootIndexInInorder = Array.IndexOf(inorder, rootValue); // Find the index of the root in inorder array
+            // Recursively build the left and right subtrees
+            root.left = BuildTreeRecursive(inorder[..rootIndexInInorder], postorder[..rootIndexInInorder]);
+            root.right = BuildTreeRecursive(inorder[(rootIndexInInorder + 1)..], postorder[rootIndexInInorder..^1]);
+            return root; // Return the constructed tree
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DSAlgo.LeetCode.Array
+namespace DSAlgo.LeetCode.Array.Medium
 {
     using System;
     public class L18_4Sum

@@ -10,6 +10,8 @@ namespace DSAlgo.LeetCode.String.Medium
     {
         public L49_GroupAnagram() { }
 
+        // Time Complexity: O(n * k log k) where n is the number of strings and k is the maximum length of a string
+        // Space Complexity: O(n * k) for storing the grouped anagrams
         public IList<IList<string>> GroupAnagrams(string[] strs)
         {
             var anagramGroups = new Dictionary<string, IList<string>>();
@@ -26,6 +28,8 @@ namespace DSAlgo.LeetCode.String.Medium
         }
 
         // Optimized Approach using Character Count as Key
+        // Time Complexity: O(n * k) where n is the number of strings and k is the maximum length of a string
+        // Space Complexity: O(n * k) for the dictionary to store the anagram groups
         public IList<IList<string>> GroupAnagramsOptimized(string[] strs)
         {
             var anagramGroups = new Dictionary<string, IList<string>>();

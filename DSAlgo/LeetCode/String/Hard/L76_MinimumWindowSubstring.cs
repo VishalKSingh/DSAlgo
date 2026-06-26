@@ -17,51 +17,55 @@ namespace DSAlgo.LeetCode.String.Hard
         {
             if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(t)) return "";
 
-            Dictionary<char, int> charCount = new Dictionary<char, int>();
+            Dictionary<char, int> charCount_t = new Dictionary<char, int>();
             foreach (char c in t)
             {
-                if (charCount.ContainsKey(c))
-                    charCount[c]++;
+                if (charCount_t.ContainsKey(c))
+                    charCount_t[c]++;
                 else
-                    charCount[c] = 1;
+                    charCount_t[c] = 1;
             }
 
-            int required = charCount.Count;
-            int left = 0, right = 0, formed = 0;
-            Dictionary<char, int> windowCounts = new Dictionary<char, int>();
+            int required = charCount_t.Count; // Number of unique characters in t that need to be present in the window
+            int left = 0, formed = 0; // formed is the number of unique characters in the current window that match the required count in t
+            Dictionary<char, int> charCounts = new Dictionary<char, int>(); // To keep track of character counts in the current window
             int minLength = int.MaxValue;
-            int minLeft = 0;
+            int startIndexOfMinWindow = 0;// To store the starting index of the minimum window
 
-            while (right < s.Length)
+            // Expand the window by moving the right pointer
+            for (int right = 0; right < s.Length; right++)
             {
                 char c = s[right];
-                if (windowCounts.ContainsKey(c))
-                    windowCounts[c]++;
+                if (charCounts.ContainsKey(c))
+                    charCounts[c]++;
                 else
-                    windowCounts[c] = 1;
-
-                if (charCount.ContainsKey(c) && windowCounts[c] == charCount[c])
+                    charCounts[c] = 1;
+                // If the current character's count matches the required count in t, we increment the formed count
+                if (charCount_t.ContainsKey(c) && charCounts[c] == charCount_t[c])
                     formed++;
 
-                while (left <= right && formed == required)
+                // Try to contract the window until it ceases to be 'desirable'
+                // When we have a valid window, we try to minimize it by moving the left pointer
+                // While the current window has all the required characters, we try to shrink it from the left
+                 while (left <= right && formed == required)
                 {
                     c = s[left];
                     if (right - left + 1 < minLength)
                     {
                         minLength = right - left + 1;
-                        minLeft = left;
+                        startIndexOfMinWindow = left;
                     }
 
-                    windowCounts[c]--;
-                    if (charCount.ContainsKey(c) && windowCounts[c] < charCount[c])
+                    charCounts[c]--; // Decrease the count of the character at the left pointer
+                    // If the character at the left pointer is part of t and its count in the current window is now less than required, we decrement formed
+                    if (charCount_t.ContainsKey(c) && charCounts[c] < charCount_t[c])
                         formed--;
 
                     left++;
                 }
-                right++;
             }
 
-            return minLength == int.MaxValue ? "" : s.Substring(minLeft, minLength);
+            return minLength == int.MaxValue ? "" : s.Substring(startIndexOfMinWindow, minLength);
         }
 
         // Brute force solution:

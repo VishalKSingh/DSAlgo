@@ -8,7 +8,6 @@ namespace DSAlgo.LeetCode.Tree.Easy
 {
     internal class DFS_InOrderTraversalBinaryTree
     {
-        // This problem is about traversing a binary tree in in-order
         // In-order traversal means visiting the left subtree first, then the root node, and finally the right subtree
         // The recursive approach is used to traverse the tree
         // Time Complexity: O(n) where n is the number of nodes in the tree
@@ -47,7 +46,7 @@ namespace DSAlgo.LeetCode.Tree.Easy
                     current = current.left;
                 }
                 // Current must be null at this point
-                current = stack.Pop();
+                current = stack.Pop(); 
                 result.Add(current.val); // Visit the root node
                 // We have visited the node and its left subtree. Now, it's right subtree's turn
                 current = current.right;

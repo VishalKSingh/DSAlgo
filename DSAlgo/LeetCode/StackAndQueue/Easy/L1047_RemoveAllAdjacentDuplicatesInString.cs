@@ -9,6 +9,9 @@ namespace DSAlgo.LeetCode.StackAndQueue.Easy
     internal class L1047_RemoveAllAdjacentDuplicatesInString
     {
         public L1047_RemoveAllAdjacentDuplicatesInString() { }
+
+        // Time Complexity: O(n) where n is the length of the input string
+        // Space Complexity: O(n) for the stack
         public string RemoveDuplicates(string s)
         {
             Stack<char> stack = new Stack<char>();

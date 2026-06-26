@@ -10,6 +10,8 @@ namespace DSAlgo.LeetCode.Tree.Easy
     {
         // The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
         // The length of a path between two nodes is represented by the number of edges between them.
+        // Time Complexity: O(n) where n is the number of nodes in the tree
+        // Space Complexity: O(h) where h is the height of the tree (due to recursion stack)
         public int DiameterOfBinaryTree(TreeNode root)
         {
             int diameter = 0;

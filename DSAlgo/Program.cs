@@ -1,4 +1,5 @@
 ﻿
+using DSAlgo.LeetCode.Array;
 using DSAlgo.LeetCode.Array.Easy;
 using DSAlgo.LeetCode.Array.Hard;
 using DSAlgo.LeetCode.Array.Medium;
@@ -13,6 +14,7 @@ using DSAlgo.LeetCode.String.Easy;
 using DSAlgo.LeetCode.String.Hard;
 using DSAlgo.LeetCode.String.Medium;
 using DSAlgo.LeetCode.Tree.Medium;
+using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection.Metadata.Ecma335;
@@ -75,6 +77,15 @@ var queries = new List<IList<string>>
 //var encoded = EncodeBase62(125346);
 //Console.WriteLine(encoded);
 
-var result = new L2571_MinOperationToReducetoZero();
-var res = result.MinOperations(39);
+var result = new L567_PermutationInString();
+var res = result.CheckInclusion("ab", "eidbaooo");
 Console.WriteLine(res);
+
+
+
+
+
+
+
+
+

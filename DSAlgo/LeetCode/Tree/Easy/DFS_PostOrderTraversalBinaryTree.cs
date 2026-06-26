@@ -8,8 +8,7 @@ namespace DSAlgo.LeetCode.Tree.Easy
 {
     internal class DFS_PostOrderTraversalBinaryTree
     {
-        // This problem is about traversing a binary tree in post-order
-        // Post-order traversal means visiting the left subtree first, then the right subtree, and finally the root node
+           // Post-order traversal means visiting the left subtree first, then the right subtree, and finally the root node
         // The recursive approach is used to traverse the tree
         // Time Complexity: O(n) where n is the number of nodes in the tree
         // Space Complexity: O(h) where h is the height of the tree due to recursion stack
