@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array.Medium
+namespace DSAlgo.LeetCode.Array.Medium.SlidingWindow
 {
     internal class L904FruitIntoBaskets
     {

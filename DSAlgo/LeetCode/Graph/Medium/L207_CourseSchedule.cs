@@ -68,6 +68,8 @@ namespace DSAlgo.LeetCode.Graph.Medium
 
         // Optimized version using Kahn's algorithm for topological sorting
         // Kahn's algorithm is an efficient way to perform topological sorting and can be used to determine if a cycle exists in the graph.
+        // Time Complexity: O(V + E) where V is the number of vertices (courses) and E is the number of edges (prerequisites)
+        // Space Complexity: O(V + E) for the adjacency list and in-degree array
         public bool CanFinishOptimized(int numCourses, int[][] prerequisites)
         {
             //## Form Adjancency List and Indegree Array

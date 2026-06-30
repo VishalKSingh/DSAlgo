@@ -69,6 +69,8 @@ namespace DSAlgo.LeetCode.Graph.Medium
 
 
         // Alternative BFS solution
+        // time complexity: O(M * N)
+        // space complexity: O(M * N)
         public void SolveBFS(char[][] board)
         {
             if (board == null || board.Length == 0 || board[0].Length == 0) return;

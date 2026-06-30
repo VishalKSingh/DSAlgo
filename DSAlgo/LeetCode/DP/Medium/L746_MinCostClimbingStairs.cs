@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.DP
+namespace DSAlgo.LeetCode.DP.Medium
 {
     public class L746_MinCostClimbingStairs
     {

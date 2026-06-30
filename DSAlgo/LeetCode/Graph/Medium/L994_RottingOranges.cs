@@ -56,6 +56,7 @@ namespace DSAlgo.LeetCode.Graph.Medium
                     {
                         int newX = x + dir[0];
                         int newY = y + dir[1];
+                        // If the adjacent cell is within bounds and has a fresh orange, rot it
                         if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && grid[newX][newY] == 1)
                         {
                             grid[newX][newY] = 2; // Mark as rotten

@@ -4,8 +4,8 @@
     {
         public class RandomizedSet
         {
-            private List<int> _list;
-            private Dictionary<int, int> _dict;
+            private List<int> _list;// List to store the elements
+            private Dictionary<int, int> _dict; // Dictionary to store the value and its index in the list
             private Random _random;
 
             public RandomizedSet()
@@ -21,7 +21,7 @@
                 {
                     return false; // Value already exists
                 }
-            _dict[val] = _list.Count; // Store the index of the value
+                _dict[val] = _list.Count; // Store the index of the value
                 _list.Add(val); // Add the value to the list
                 return true;
             }

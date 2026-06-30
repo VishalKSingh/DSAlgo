@@ -28,11 +28,8 @@ namespace DSAlgo.LeetCode.String.Easy
             // Loop through 'haystack' and check for the substring 'needle'
             for (int i = 0; i <= haystack.Length - needle.Length; i++)
             {
-                // Check if the substring of 'haystack' starting at index 'i' matches 'needle'
-                if (haystack.Substring(i, needle.Length) == needle)
-                {
-                    return i; // Return the index of the first occurrence
-                }
+                if (haystack.AsSpan(i, needle.Length).SequenceEqual(needle.AsSpan()))
+                    return i;
             }
             return -1; // Return -1 if 'needle' is not found in 'haystack'
         }

@@ -18,9 +18,10 @@ namespace DSAlgo.LeetCode.DP.Medium
 
         public int MaxSubarraySumCircular(int[] nums)
         {
+            // Case 1: Maximum subarray sum is not circular
             int maxKadane = Kadane(nums);
-            int totalSum = nums.Sum();
-            int minKadane = Kadane(nums.Select(x => -x).ToArray());
+            int totalSum = nums.Sum(); // Total sum of the array
+            int minKadane = Kadane(nums.Select(x => -x).ToArray()); // Minimum subarray sum is the negative of the maximum subarray sum of the negated array
             int maxCircular = totalSum + minKadane; // Since minKadane is negative, this effectively subtracts the minimum subarray sum
 
             // If all numbers are negative, maxCircular will be 0, so we return maxKadane
@@ -41,6 +42,16 @@ namespace DSAlgo.LeetCode.DP.Medium
         }
 
         // more optimized version
+        // The above solution uses Kadane's algorithm to find the maximum subarray sum and the minimum subarray sum
+        // The overall time complexity is O(n) and space complexity is O(1)
+
+
+        // The brute force solution is to use two nested loops to check all subarrays
+        // This is a simple solution but it is not efficient for large arrays
+        // Time Complexity: O(n^2)
+        // Space Complexity: O(1)
+
+
         public int MaxSubarraySumCircularOptimized(int[] nums)
         {
             int maxSum = nums[0], minSum = nums[0], totalSum = nums[0];

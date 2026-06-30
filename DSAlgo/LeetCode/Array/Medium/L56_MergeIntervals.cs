@@ -24,7 +24,6 @@ namespace DSAlgo.LeetCode.Array.Medium
             List<int[]> merged = new List<int[]>();
 
             int[] currentInterval = intervals[0]; // 
-            merged.Add(currentInterval);
             for (int i = 1; i < intervals.Length; i++)
             {
                 if (currentInterval[1] >= intervals[i][0]) // Check for overlap
@@ -34,8 +33,9 @@ namespace DSAlgo.LeetCode.Array.Medium
                 else
                 {
                     currentInterval = intervals[i]; // Move to the next interval
-                    merged.Add(currentInterval);
                 }
+                merged.Add(currentInterval);
+
             }
             return merged.ToArray();
         }

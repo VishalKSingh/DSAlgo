@@ -70,14 +70,11 @@
 internal class L407_TrappingRainWaterII
 {
 
-    public L407_TrappingRainWaterII() { }
-    
-    public L407_TrappingRainWaterII(int[][] heightMap)
-    {
-        int result = TrapRainWater(heightMap);
-        Console.WriteLine(result);
-    }
-
+    // This problem is to calculate the amount of water that can be trapped after raining
+    // given a 2D grid representing the height of each cell.
+    // The approach is to use a priority queue (min-heap) to simulate the water trapping process.
+    // Time Complexity: O(m * n * log(m * n)) where m and n are the dimensions of the grid
+    // Space Complexity: O(m * n) for the priority queue
     public int TrapRainWater(int[][] heightMap)
     {
         if (heightMap == null || heightMap.Length == 0 || heightMap[0].Length == 0) return 0;
@@ -86,6 +83,8 @@ internal class L407_TrappingRainWaterII
         PriorityQueue<(int, int), int> pq = new PriorityQueue<(int, int), int>();
         int[] directions = { 0, 1, 0, -1, 0 };
         int waterTrapped = 0;
+
+        // Initialize the priority queue with the boundary cells
         for (int i = 0; i < m; i++)
         {
             for (int j = 0; j < n; j++)
@@ -93,7 +92,8 @@ internal class L407_TrappingRainWaterII
                 // Add boundary cells to the priority queue
                 if (i == 0 || i == m - 1 || j == 0 || j == n - 1)
                 {
-                    pq.Enqueue((heightMap[i][j], i * n + j), heightMap[i][j]);
+                    // i*n+j is used to convert 2D coordinates to a single index for storage in the priority queue
+                    pq.Enqueue((heightMap[i][j], i * n + j), heightMap[i][j]); // Store height and index in the queue
                     visited[i, j] = true;
                 }
             }
@@ -109,6 +109,7 @@ internal class L407_TrappingRainWaterII
                 {
                     visited[nx, ny] = true;
                     waterTrapped += Math.Max(0, height - heightMap[nx][ny]);
+                    // i*n+j is used to convert 2D coordinates to a single index for storage in the priority queue
                     pq.Enqueue((Math.Max(height, heightMap[nx][ny]), nx * n + ny), Math.Max(height, heightMap[nx][ny]));
                 }
             }

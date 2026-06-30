@@ -42,7 +42,14 @@ namespace DSAlgo.LeetCode.String.Medium
                 currentRow += goingDown ? 1 : -1;
             }
 
-            return string.Join("", rows.Select(r => r.ToString()));
+            var result = new StringBuilder();
+            // Concatenate all rows to form the final result
+            foreach (var row in rows)
+            {
+                result.Append(row);
+            }
+
+            return result.ToString();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace DSAlgo.LeetCode.DP
+﻿namespace DSAlgo.LeetCode.DP.Medium
 {
     using System;
     public class L983_MinimumCostForTickets

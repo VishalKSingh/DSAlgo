@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSAlgo.LeetCode.Array.Medium
+namespace DSAlgo.LeetCode.Array.Medium.BinarySearch
 {
     internal class L875_KokoEatingBananas
     {
@@ -27,6 +27,7 @@ namespace DSAlgo.LeetCode.Array.Medium
             }
             return left; // The minimum speed that allows Koko to eat all bananas in h hours
         }
+        // Helper method to calculate the total hours needed to eat all bananas at a given speed
         private int CalculateHours(int[] piles, int speed)
         {
             int hours = 0;

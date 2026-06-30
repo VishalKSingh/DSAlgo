@@ -77,8 +77,8 @@ var queries = new List<IList<string>>
 //var encoded = EncodeBase62(125346);
 //Console.WriteLine(encoded);
 
-var result = new L567_PermutationInString();
-var res = result.CheckInclusion("ab", "eidbaooo");
+var result = new L56_MergeIntervals();
+var res = result.Merge(new int[][] { new int[] { 1, 3 }, new int[] { 2, 6 }, new int[] { 8, 10 }, new int[] { 15, 18 } });
 Console.WriteLine(res);
 
 
