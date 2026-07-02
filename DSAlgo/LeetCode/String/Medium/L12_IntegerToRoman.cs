@@ -10,6 +10,7 @@ namespace DSAlgo.LeetCode.String.Medium
     {
         public string IntToRoman(int num)
         {
+            // Define the mapping of integer values to Roman numerals
             if (num <= 0 || num > 3999)
                 return string.Empty;
             StringBuilder sb = new StringBuilder();

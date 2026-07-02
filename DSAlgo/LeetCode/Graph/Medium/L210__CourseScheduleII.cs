@@ -66,6 +66,9 @@ namespace DSAlgo.LeetCode.Graph.Medium
         }
 
         // optimized version using Kahn's algorithm
+        // Kahn's algorithm for topological sorting
+        // Time Complexity: O(V + E) where V is the number of vertices (courses) and E is the number of edges (prerequisites)
+        // Space Complexity: O(V + E) for the adjacency list and in-degree array
         public int[] FindOrderKahn(int numCourses, int[][] prerequisites)
         {
             var graph = new List<int>[numCourses];

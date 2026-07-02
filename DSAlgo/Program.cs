@@ -18,7 +18,9 @@ using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Timers;
 
 var equations = new List<IList<string>>
             {
@@ -80,6 +82,12 @@ var queries = new List<IList<string>>
 var result = new L56_MergeIntervals();
 var res = result.Merge(new int[][] { new int[] { 1, 3 }, new int[] { 2, 6 }, new int[] { 8, 10 }, new int[] { 15, 18 } });
 Console.WriteLine(res);
+
+
+
+
+
+
 
 
 
