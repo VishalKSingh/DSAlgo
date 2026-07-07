@@ -37,6 +37,8 @@ namespace DSAlgo.LeetCode.DP.Medium
         }
 
         // Recursive approach with memoization
+        // Time Complexity: O(n^2) due to the recursive calls and memoization
+        // Space Complexity: O(n) for the memoization array
         public int NumDecodingsRecursive(string s)
         {
             Dictionary<int, int> memo = new Dictionary<int, int>(); // Create a dictionary to store the results of previously calculated indices

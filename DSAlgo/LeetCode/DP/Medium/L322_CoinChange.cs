@@ -39,12 +39,13 @@
         // Space Complexity: O(n) for the memoization dictionary and the recursive call stack
         public int CoinChangeRecursive(int[] coins, int amount)
         {
+            // <amount, minCoins>
             Dictionary<int, int> memo = new Dictionary<int, int>(); // Create a dictionary to store the results of previously calculated amounts
-            return CoinChangeHelper(coins, amount, memo);
+            return MinCoinsNeededToMakeAmount(coins, amount, memo);
         }
 
         /// This helper method recursively calculates the minimum number of coins needed for a given amount.
-        private int CoinChangeHelper(int[] coins, int amount, Dictionary<int, int> memo)
+        private int MinCoinsNeededToMakeAmount(int[] coins, int amount, Dictionary<int, int> memo)
         {
             if (amount < 0) return -1; // Base case: if the amount is negative, return -1 (not possible)
             if (amount == 0) return 0; // Base case: if the amount is 0, return 0 (no coins needed)
@@ -55,11 +56,11 @@
             // Iterate through all coins and recursively calculate the minimum coins needed for the remaining amount
             foreach (var coin in coins)
             {
-                int res = CoinChangeHelper(coins, amount - coin, memo); // Recursive call for the remaining amount
+                int coinsNeeded = MinCoinsNeededToMakeAmount(coins, amount - coin, memo); // Recursive call for the remaining amount
                 // If the result is valid (not -1), update minCoins with the minimum value found
-                if (res >= 0 && res < minCoins)
+                if (coinsNeeded >= 0 && coinsNeeded < minCoins)
                 {
-                    minCoins = res + 1; // Update minCoins if a valid solution is found
+                    minCoins = coinsNeeded + 1; // Update minCoins if a valid solution is found
                 }
             }
             memo[amount] = (minCoins == int.MaxValue) ? -1 : minCoins; // Store the result in the memo dictionary

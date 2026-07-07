@@ -47,6 +47,8 @@ namespace DSAlgo.LeetCode.DP.Medium
         // If it does, it recursively calls itself with the remaining substring after removing the matched word.
         // If any of the recursive calls return true, it means the current substring can be segmented, and we store this result in the memoization dictionary before returning true.
         // If none of the words match or if all recursive calls return false, we store the result as false in the memoization dictionary and return false.
+        // Time Complexity: O(n^2 * m), where n is the length of the string and m is the number of words in the dictionary.
+        // Space Complexity: O(n), where n is the length of the string, due to the recursion stack and memoization dictionary.
         public bool WordBreakRecursive(string s, IList<string> wordDict)
         {
             // Create a dictionary to store the results of previously calculated substrings

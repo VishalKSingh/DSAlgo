@@ -17,18 +17,18 @@ namespace DSAlgo.LeetCode.String.Hard
         {
             if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(t)) return "";
 
-            Dictionary<char, int> charCount_t = new Dictionary<char, int>();
+            Dictionary<char, int> charMap_t = new Dictionary<char, int>();
             foreach (char c in t)
             {
-                if (charCount_t.ContainsKey(c))
-                    charCount_t[c]++;
+                if (charMap_t.ContainsKey(c))
+                    charMap_t[c]++;
                 else
-                    charCount_t[c] = 1;
+                    charMap_t[c] = 1;
             }
 
-            int required = charCount_t.Count; // Number of unique characters in t that need to be present in the window
+            int required = charMap_t.Count; // Number of unique characters in t that need to be present in the window
             int left = 0, formed = 0; // formed is the number of unique characters in the current window that match the required count in t
-            Dictionary<char, int> charCounts = new Dictionary<char, int>(); // To keep track of character counts in the current window
+            Dictionary<char, int> charMap_s = new Dictionary<char, int>(); // To keep track of character counts in the current window
             int minLength = int.MaxValue;
             int startIndexOfMinWindow = 0;// To store the starting index of the minimum window
 
@@ -36,12 +36,12 @@ namespace DSAlgo.LeetCode.String.Hard
             for (int right = 0; right < s.Length; right++)
             {
                 char c = s[right];
-                if (charCounts.ContainsKey(c))
-                    charCounts[c]++;
+                if (charMap_s.ContainsKey(c))
+                    charMap_s[c]++;
                 else
-                    charCounts[c] = 1;
+                    charMap_s[c] = 1;
                 // If the current character's count matches the required count in t, we increment the formed count
-                if (charCount_t.ContainsKey(c) && charCounts[c] == charCount_t[c])
+                if (charMap_t.ContainsKey(c) && charMap_s[c] == charMap_t[c])
                     formed++;
 
                 // Try to contract the window until it ceases to be 'desirable'
@@ -56,9 +56,9 @@ namespace DSAlgo.LeetCode.String.Hard
                         startIndexOfMinWindow = left;
                     }
 
-                    charCounts[c]--; // Decrease the count of the character at the left pointer
+                    charMap_s[c]--; // Decrease the count of the character at the left pointer
                     // If the character at the left pointer is part of t and its count in the current window is now less than required, we decrement formed
-                    if (charCount_t.ContainsKey(c) && charCounts[c] < charCount_t[c])
+                    if (charMap_t.ContainsKey(c) && charMap_s[c] < charMap_t[c])
                         formed--;
 
                     left++;

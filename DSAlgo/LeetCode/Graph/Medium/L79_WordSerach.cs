@@ -8,17 +8,8 @@ namespace DSAlgo.LeetCode.Graph.Medium
 {
     internal class L79_WordSerach
     {
-        public L79_WordSerach()
-        {
-            char[][] board = new char[][]
-            {
-                new char[] { 'A', 'B', 'C', 'E' },
-                new char[] { 'S', 'F', 'C', 'S' },
-                new char[] { 'A', 'D', 'E', 'E' }
-            };
-            string word = "ABCCED";
-            Console.WriteLine(Exist(board, word));
-        }
+        // Time complexity: O(n * m * 4^L) L is word length, n is number of rows, m is number of columns
+        // Space complexity: O(L)
         public bool Exist(char[][] board, string word)
         {
             for (int i = 0; i < board.Length; i++)

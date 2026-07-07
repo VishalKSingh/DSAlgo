@@ -47,7 +47,6 @@ namespace DSAlgo.LeetCode.DP
         }
 
 
-        // This method calculates the number of distinct ways to climb to the nth step
         // using a top-down recursive approach with memoization.
         // It uses a dictionary to store the results of previously calculated steps to avoid redundant calculations.
         // Time Complexity: O(n)
@@ -59,7 +58,7 @@ namespace DSAlgo.LeetCode.DP
         }
         private int ClimbStairsHelper(int n, Dictionary<int, int> memo)
         {
-            if (n <= 2) return n;
+            if (n <= 2) return n; 
 
             if (memo.ContainsKey(n)) return memo[n];
 

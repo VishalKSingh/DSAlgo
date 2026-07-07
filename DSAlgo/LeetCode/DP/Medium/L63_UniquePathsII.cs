@@ -136,9 +136,16 @@ namespace DSAlgo.LeetCode.DP.Medium
             int n = obstacleGrid[0].Length;
             if (obstacleGrid[0][0] == 1 || obstacleGrid[m - 1][n - 1] == 1)
                 return 0; // If start or end is blocked, return 0
+            
             int[][] memo = new int[m][];
             for (int i = 0; i < m; i++)
-                memo[i] = Enumerable.Repeat(-1, n).ToArray(); // Initialize memoization array with -1
+            {
+                memo[i] = new int[n];
+                for (int j = 0; j < n; j++)
+                {
+                    memo[i][j] = -1;
+                }
+            }
             return UniquePathsWithObstaclesMemoization(obstacleGrid, 0, 0, memo);
         }
 

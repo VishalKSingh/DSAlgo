@@ -46,7 +46,9 @@
         // Space Complexity: O(n) for the memoization dictionary
         public int MincostTicketsRecursive(int[] days, int[] costs)
         {
-            Dictionary<int, int> memo = new Dictionary<int, int>();
+            // Create a memoization dictionary to store the results of previously calculated days
+            // The key is the index of the day in the days array, and the value is the minimum cost to cover that day
+            Dictionary<int, int> memo = new Dictionary<int, int>(); //<index, minCost>
             return MincostTicketsHelper(days, costs, 0, memo);
         }
         private int MincostTicketsHelper(int[] days, int[] costs, int index, Dictionary<int, int> memo)
@@ -56,54 +58,24 @@
             if (memo.ContainsKey(index)) return memo[index];
 
             int minCost = int.MaxValue;
+            // Iterate through each ticket type (1-day, 7-day, 30-day)
             for (int i = 0; i < costs.Length; i++)
             {
-                int duration = i == 0 ? 1 : (i == 1 ? 7 : 30);
+                // Calculate the next index that can be covered by the current ticket type
+                int duration = i == 0 ? 1 : (i == 1 ? 7 : 30); // duration of the ticket
                 int nextIndex = index;
+                
                 while (nextIndex < days.Length && days[nextIndex] < days[index] + duration)
                 {
-                    nextIndex++;
+                    nextIndex++; // Move to the next day that is not covered by the current ticket
                 }
+                // Recursively call the helper function for the next index and add the cost of the current ticket
                 minCost = Math.Min(minCost, costs[i] + MincostTicketsHelper(days, costs, nextIndex, memo));
             }
 
             memo[index] = minCost;
             return minCost;
         }
-
-        // This is a recursive solution to the problem of finding the minimum cost for tickets.
-        // The function takes an array of days and an array of costs for 1-day, 7-day, and 30-day tickets.
-        // It uses memoization to store the results of previously calculated days to avoid redundant calculations.
-        // The function iterates through each day and checks the cost of each ticket type (1-day, 7-day, 30-day).
-        // It calculates the next day that can be covered by each ticket type and recursively calls the function for the next day.
-        // Finally, it returns the minimum cost to cover all days.
-        // Time Complexity: O(n * m) where n is the number of days and m is the number of ticket types (3 in this case)
-        // Space Complexity: O(n) for the memoization dictionary
-        public int MincostTicketsRecursiveMemo(int[] days, int[] costs)
-        {
-            Dictionary<int, int> memo = new Dictionary<int, int>();
-            return MincostTicketsHelper1(days, costs, 0, memo);
-        }
-        private int MincostTicketsHelper1(int[] days, int[] costs, int index, Dictionary<int, int> memo)
-        {
-            if (index >= days.Length) return 0;
-
-            if (memo.ContainsKey(index)) return memo[index];
-
-            int minCost = int.MaxValue;
-            for (int i = 0; i < costs.Length; i++)
-            {
-                int duration = i == 0 ? 1 : (i == 1 ? 7 : 30);
-                int nextIndex = index;
-                while (nextIndex < days.Length && days[nextIndex] < days[index] + duration)
-                {
-                    nextIndex++;
-                }
-                minCost = Math.Min(minCost, costs[i] + MincostTicketsHelper1(days, costs, nextIndex, memo));
-            }
-
-            memo[index] = minCost;
-            return minCost;
-        }
+              
     }
 }

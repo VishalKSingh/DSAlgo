@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSAlgo.LeetCode.DP.Medium
 {
+    using System;
     public class L746_MinCostClimbingStairs
     {
         // You are given an integer array cost where cost[i] is the cost of ith step on a staircase.
@@ -61,6 +62,26 @@ namespace DSAlgo.LeetCode.DP.Medium
             }
 
             return prev1;
+        }
+
+        // using memoization
+        public int MinCostClimbingStairsMemoization(int[] cost)
+        {
+            int n = cost.Length;
+            int[] memo = new int[n + 1];
+            Array.Fill(memo, -1);
+            return MinCost(cost, n, memo);
+        }
+         
+        private int MinCost(int[] cost, int n, int[] memo)
+        {
+            // Base case: If we are at step 0 or step 1, the cost is 0
+            if (n <= 1) return 0;
+            if (memo[n] != -1) return memo[n];
+            int costOneStep = MinCost(cost, n - 1, memo) + cost[n - 1]; // Cost to reach step n from step n-1
+            int costTwoSteps = MinCost(cost, n - 2, memo) + cost[n - 2]; // Cost to reach step n from step n-2
+            memo[n] = Math.Min(costOneStep, costTwoSteps);
+            return memo[n];
         }
     }
 }
