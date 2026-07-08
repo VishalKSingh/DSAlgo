@@ -51,7 +51,7 @@
             foreach (var num in nums)
             {
                 int index = lis.BinarySearch(num);
-                if (index < 0) index = ~index;
+                if (index < 0) index = ~index; // If not found, BinarySearch returns the bitwise complement of the index of the next element that is larger than num
 
                 if (index == lis.Count)
                 {

@@ -9,7 +9,8 @@ namespace DSAlgo.LeetCode.Trie.Medium
     internal class L208_ImplementTrie_PrefixTree
     {
         // Implement a trie with insert, search, and startsWith methods.
-        // A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+        // A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings.
+        // There are various applications of this data structure, such as autocomplete and spellchecker.
         // Implement the Trie class:
         // Trie trie = new Trie();
         // void insert(String word) Inserts the string word into the trie.
@@ -18,7 +19,8 @@ namespace DSAlgo.LeetCode.Trie.Medium
 
         private class TrieNode
         {
-            public Dictionary<char, TrieNode> Children { get; set; }
+            // Initialize your data structure here.
+            public Dictionary<char, TrieNode> Children { get; set; } // Each node will have a dictionary of its children nodes
             public bool IsEndOfWord { get; set; }
 
             public TrieNode()

@@ -52,7 +52,7 @@ namespace DSAlgo.LeetCode.DP.Medium
         public int MinCostClimbingStairsOptimized(int[] cost)
         {
             int n = cost.Length;
-            int prev1 = 0, prev2 = 0;
+            int prev1 = 0, prev2 = 0;// prev1 represents the minimum cost to reach step i-1, prev2 represents the minimum cost to reach step i-2
 
             for (int i = 2; i <= n; i++)
             {
